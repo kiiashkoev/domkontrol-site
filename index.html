@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Domkontrol – inteligentny dom i automatyka budynkowa | Trójmiasto</title>
+<meta name="description" content="Montaż i konfiguracja inteligentnego domu w Trójmieście: oświetlenie, rolety, ogrzewanie, czujniki, Home Assistant. Inżynier elektryk z uprawnieniami SEP. Wycena: 792 373 885.">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png">
+<link rel="apple-touch-icon" href="favicon-512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;800&family=Inter:wght@400;600&display=swap">
+<style>
+:root{--navy:#0F2A43;--teal:#0B8A7C;--teal-l:#2DD4BF;--grey:#3D5266;--bg:#F2F6F8;--line:#DCE4EA;--white:#fff}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--navy);background:var(--white);line-height:1.6;font-size:17px}
+h1,h2,h3{font-family:Manrope,system-ui,sans-serif;line-height:1.2;margin:0}
+h1{font-size:clamp(2rem,5vw,3.1rem);font-weight:800;letter-spacing:-.01em}
+h2{font-size:clamp(1.5rem,3.4vw,2.1rem);font-weight:800}
+h3{font-size:1.1rem;font-weight:800}
+p{margin:0}
+a{color:var(--teal)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+section{padding:72px 0}
+.kicker{font-family:Manrope,sans-serif;font-weight:600;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
+.lead{color:var(--grey);font-size:1.08rem;max-width:62ch;margin-top:14px}
+header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}
+.logo svg{height:52px;width:auto;display:block}
+nav{display:flex;gap:22px;flex-wrap:wrap;align-items:center}
+nav a{color:var(--navy);text-decoration:none;font-weight:600;font-size:.95rem;padding:10px 0}
+nav a:hover{color:var(--teal)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 22px;border-radius:10px;font-family:Manrope,sans-serif;font-weight:800;font-size:1rem;text-decoration:none;border:2px solid transparent;cursor:pointer}
+.btn-p{background:var(--teal);color:#fff}
+.btn-p:hover{background:#087267}
+.btn-s{background:transparent;color:var(--navy);border-color:var(--navy)}
+.btn-s:hover{background:var(--navy);color:#fff}
+nav .btn{padding:10px 18px;color:#fff}
+.hero{background:var(--navy);color:#fff;padding:84px 0}
+.hero .kicker{color:var(--teal-l)}
+.hero p.lead{color:#D5DFE7}
+.hero .btn-s{color:#fff;border-color:#fff}
+.hero .btn-s:hover{background:#fff;color:var(--navy)}
+.cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:44px}
+.fact{border:1px solid rgba(255,255,255,.22);border-radius:12px;padding:16px 18px}
+.fact b{display:block;font-family:Manrope,sans-serif;font-weight:800;font-size:1.02rem}
+.fact span{color:#C9D6E0;font-size:.93rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px;margin-top:36px}
+.card{background:var(--bg);border-radius:14px;padding:24px}
+.card svg{width:34px;height:34px;margin-bottom:14px}
+.card p{color:var(--grey);margin-top:8px;font-size:.98rem}
+.alt{background:var(--bg)}
+.alt .card{background:#fff}
+.steps{counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:36px}
+.step{background:#fff;border-radius:14px;padding:24px;counter-increment:s}
+.step::before{content:counter(s);display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:var(--navy);color:#fff;font-family:Manrope,sans-serif;font-weight:800;margin-bottom:14px}
+.step p{color:var(--grey);margin-top:8px;font-size:.98rem}
+.tablebox{overflow-x:auto;margin-top:30px;border:1px solid var(--line);border-radius:14px}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:.98rem}
+th,td{text-align:left;padding:14px 18px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:Manrope,sans-serif;font-weight:800;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+td.p,th.p{text-align:right;white-space:nowrap;font-family:Manrope,sans-serif;font-weight:800}
+td small{display:block;color:var(--grey);font-size:.88rem}
+.packs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:36px}
+.pack{border:2px solid var(--line);border-radius:14px;padding:26px;display:flex;flex-direction:column;gap:10px}
+.pack.top{border-color:var(--teal)}
+.pack .price{font-family:Manrope,sans-serif;font-weight:800;font-size:1.7rem}
+.pack ul{margin:6px 0 0;padding-left:20px;color:var(--grey);font-size:.97rem}
+.pack li{margin:4px 0}
+.note{color:var(--grey);font-size:.92rem;margin-top:18px;max-width:80ch}
+details{border-bottom:1px solid var(--line);padding:6px 0}
+summary{cursor:pointer;font-family:Manrope,sans-serif;font-weight:800;padding:14px 0;min-height:48px}
+details p{color:var(--grey);padding:0 0 16px;max-width:75ch}
+.faq{margin-top:26px}
+.contact{background:var(--navy);color:#fff}
+.contact .kicker{color:var(--teal-l)}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:36px;margin-top:34px}
+.big{font-family:Manrope,sans-serif;font-weight:800;font-size:1.7rem;color:#fff;text-decoration:none;display:block}
+.contact p{color:#D5DFE7}
+.contact a.mail{color:var(--teal-l);font-weight:600;font-size:1.1rem;word-break:break-all}
+form{display:grid;gap:12px}
+label{font-weight:600;font-size:.93rem}
+input,textarea{width:100%;margin-top:6px;padding:13px 14px;border-radius:10px;border:1px solid #5B7389;background:#fff;color:var(--navy);font:inherit}
+textarea{min-height:110px;resize:vertical}
+:focus-visible{outline:3px solid var(--teal-l);outline-offset:2px}
+.msg{font-size:.93rem;color:#C9D6E0}
+footer{background:#0A2036;color:#B4C4D1;padding:34px 0;font-size:.9rem}
+.frow{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
+footer svg{height:44px;width:auto}
+footer a{color:#B4C4D1}
+@media (max-width:640px){section{padding:54px 0}.hero{padding:60px 0}nav{gap:14px}.logo svg{height:44px}.btn{width:100%}nav .btn{width:auto}}
+</style>
+</head>
+<body>
+<header>
+<div class="wrap bar">
+<a class="logo" href="#top" aria-label="Domkontrol – strona główna"><svg role="img" aria-label="Domkontrol – automatyka budynkowa" xmlns="http://www.w3.org/2000/svg" width="420" height="124" viewBox="0 0 420 124"><g transform="translate(24 24) scale(1.1875)"><rect width="64" height="64" rx="15" fill="#0F2A43"/><path d="M17 48 H45 V29 L32 18 L19 29 V39 H29" stroke="#FFFFFF" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="34" cy="39" r="4.2" fill="#2DD4BF"/></g><path d="M120.52 60.50V34.58H128.91Q129.21 34.58 130.17 34.60Q131.12 34.61 132.00 34.72Q135.14 35.10 137.31 36.90Q139.49 38.70 140.63 41.47Q141.76 44.24 141.76 47.54Q141.76 50.83 140.63 53.60Q139.49 56.38 137.31 58.18Q135.14 59.98 132.00 60.35Q131.12 60.46 130.17 60.48Q129.21 60.50 128.91 60.50ZM125.49 55.89H128.91Q129.39 55.89 130.22 55.86Q131.05 55.84 131.72 55.71Q133.41 55.37 134.48 54.13Q135.55 52.88 136.06 51.14Q136.58 49.39 136.58 47.54Q136.58 45.59 136.05 43.85Q135.51 42.10 134.43 40.90Q133.35 39.69 131.72 39.37Q131.05 39.22 130.22 39.20Q129.39 39.19 128.91 39.19H125.49Z M160.70 61.04Q156.81 61.04 153.99 59.35Q151.17 57.65 149.65 54.61Q148.13 51.57 148.13 47.54Q148.13 43.51 149.65 40.46Q151.17 37.42 153.99 35.73Q156.81 34.04 160.70 34.04Q164.58 34.04 167.40 35.73Q170.22 37.42 171.74 40.46Q173.26 43.51 173.26 47.54Q173.26 51.57 171.74 54.61Q170.22 57.65 167.40 59.35Q164.58 61.04 160.70 61.04ZM160.70 56.43Q163.16 56.47 164.80 55.37Q166.44 54.27 167.26 52.25Q168.08 50.24 168.08 47.54Q168.08 44.84 167.26 42.86Q166.44 40.88 164.80 39.78Q163.16 38.68 160.70 38.65Q158.23 38.61 156.59 39.71Q154.95 40.81 154.13 42.82Q153.32 44.84 153.32 47.54Q153.32 50.24 154.13 52.22Q154.95 54.20 156.59 55.30Q158.23 56.39 160.70 56.43Z M180.35 60.50V34.58H184.74L193.31 51.79L201.88 34.58H206.27V60.50H201.70V45.02L194.18 60.50H192.45L184.92 45.02V60.50Z" fill="#0F2A43"/><path d="M214.80 60.50V34.58H218.01V46.75L229.35 34.58H233.38L221.61 47.16L234.30 60.50H230.16L218.01 47.83V60.50Z M250.97 61.04Q247.10 61.04 244.40 59.33Q241.70 57.62 240.28 54.58Q238.87 51.53 238.87 47.54Q238.87 43.54 240.28 40.50Q241.70 37.46 244.40 35.75Q247.10 34.04 250.97 34.04Q254.85 34.04 257.55 35.75Q260.25 37.46 261.66 40.50Q263.06 43.54 263.06 47.54Q263.06 51.53 261.66 54.58Q260.25 57.62 257.55 59.33Q254.85 61.04 250.97 61.04ZM250.97 57.98Q253.86 58.00 255.80 56.67Q257.73 55.35 258.70 52.99Q259.66 50.63 259.66 47.54Q259.66 44.42 258.70 42.08Q257.73 39.74 255.80 38.43Q253.86 37.12 250.97 37.10Q248.07 37.08 246.15 38.39Q244.23 39.71 243.26 42.07Q242.29 44.42 242.27 47.54Q242.25 50.63 243.23 52.97Q244.20 55.31 246.13 56.64Q248.07 57.96 250.97 57.98Z M270.15 60.50V34.58H273.39L286.91 54.83V34.58H290.15V60.50H286.91L273.39 40.23V60.50Z M305.36 60.50V37.62H296.52V34.58H317.40V37.62H308.57V60.50Z M323.78 60.50V34.58H334.02Q334.40 34.58 334.92 34.61Q335.44 34.63 335.93 34.72Q338.03 35.05 339.46 36.16Q340.89 37.28 341.61 38.98Q342.33 40.68 342.33 42.75Q342.33 45.76 340.77 47.95Q339.67 49.50 337.87 50.24L342.87 60.50H339.20L334.56 50.92H326.98V60.50ZM326.98 47.88H333.91Q334.25 47.88 334.69 47.84Q335.13 47.81 335.53 47.72Q336.77 47.43 337.55 46.67Q338.34 45.90 338.70 44.87Q339.06 43.83 339.06 42.75Q339.06 41.67 338.70 40.64Q338.34 39.60 337.55 38.83Q336.77 38.05 335.53 37.78Q335.13 37.67 334.69 37.65Q334.25 37.62 333.91 37.62H326.98Z M360.98 61.04Q357.11 61.04 354.41 59.33Q351.71 57.62 350.30 54.58Q348.89 51.53 348.89 47.54Q348.89 43.54 350.30 40.50Q351.71 37.46 354.41 35.75Q357.11 34.04 360.98 34.04Q364.87 34.04 367.57 35.75Q370.27 37.46 371.67 40.50Q373.08 43.54 373.08 47.54Q373.08 51.53 371.67 54.58Q370.27 57.62 367.57 59.33Q364.87 61.04 360.98 61.04ZM360.98 57.98Q363.88 58.00 365.81 56.67Q367.75 55.35 368.71 52.99Q369.68 50.63 369.68 47.54Q369.68 44.42 368.71 42.08Q367.75 39.74 365.81 38.43Q363.88 37.12 360.98 37.10Q358.08 37.08 356.17 38.39Q354.25 39.71 353.28 42.07Q352.31 44.42 352.29 47.54Q352.27 50.63 353.24 52.97Q354.21 55.31 356.15 56.64Q358.08 57.96 360.98 57.98Z M380.53 60.50V34.58H383.73V57.46H395.76V60.50Z" fill="#0F2A43"/><rect x="118.00" y="69.50" width="278.30" height="1.98" fill="#0B8A7C"/><path d="M118.25 89.42 121.15 80.48H123.02L125.93 89.42H124.58L123.92 87.40H120.25L119.60 89.42ZM123.52 86.19 122.07 81.78 120.65 86.19Z M136.61 89.61Q135.56 89.61 134.76 89.18Q133.95 88.74 133.50 87.96Q133.05 87.19 133.05 86.13V80.49L134.36 80.48V86.06Q134.36 86.63 134.56 87.07Q134.75 87.50 135.07 87.79Q135.39 88.09 135.79 88.24Q136.20 88.38 136.61 88.38Q137.03 88.38 137.43 88.23Q137.83 88.08 138.16 87.79Q138.48 87.50 138.67 87.06Q138.86 86.63 138.86 86.06V80.48H140.18V86.13Q140.18 87.18 139.72 87.96Q139.27 88.74 138.47 89.18Q137.66 89.61 136.61 89.61Z M150.14 89.42V81.70H147.17V80.48H154.42V81.70H151.44V89.42Z M165.14 89.61Q163.80 89.61 162.86 89.02Q161.91 88.43 161.41 87.38Q160.91 86.33 160.91 84.95Q160.91 83.57 161.41 82.52Q161.91 81.47 162.86 80.88Q163.80 80.29 165.14 80.29Q166.48 80.29 167.42 80.88Q168.37 81.47 168.87 82.52Q169.36 83.57 169.36 84.95Q169.36 86.33 168.87 87.38Q168.37 88.43 167.42 89.02Q166.48 89.61 165.14 89.61ZM165.14 88.37Q166.09 88.38 166.72 87.95Q167.35 87.52 167.67 86.75Q167.98 85.97 167.98 84.95Q167.98 83.93 167.67 83.16Q167.35 82.39 166.72 81.96Q166.09 81.53 165.14 81.53Q164.19 81.52 163.56 81.94Q162.93 82.37 162.61 83.15Q162.30 83.93 162.29 84.95Q162.28 85.97 162.60 86.74Q162.92 87.51 163.55 87.94Q164.19 88.37 165.14 88.37Z M176.60 89.42V80.48H177.78L181.02 87.20L184.24 80.48H185.43V89.41H184.20V83.30L181.31 89.42H180.72L177.83 83.30V89.42Z M192.55 89.42 195.45 80.48H197.32L200.23 89.42H198.88L198.22 87.40H194.55L193.89 89.42ZM197.82 86.19 196.37 81.78 194.94 86.19Z M209.57 89.42V81.70H206.60V80.48H213.85V81.70H210.87V89.42Z M222.99 89.42V85.73L219.97 80.48H221.48L223.65 84.24L225.82 80.48H227.33L224.31 85.73V89.42Z M234.20 89.42V80.48H235.50V84.65L239.25 80.48H240.86L236.90 84.84L241.15 89.42H239.49L235.50 85.15V89.42Z M247.40 89.42 250.31 80.48H252.17L255.08 89.42H253.73L253.07 87.40H249.40L248.75 89.42ZM252.67 86.19 251.22 81.78 249.80 86.19Z  M270.68 89.42V80.48H274.20Q275.05 80.48 275.62 80.83Q276.20 81.17 276.49 81.72Q276.79 82.27 276.79 82.88Q276.79 83.62 276.43 84.15Q276.18 84.50 275.84 84.70Q276.41 84.93 276.75 85.38Q277.21 86.00 277.21 86.81Q277.21 87.60 276.89 88.19Q276.58 88.77 275.98 89.10Q275.38 89.42 274.53 89.42ZM272.00 88.19H274.33Q274.77 88.19 275.12 88.02Q275.47 87.85 275.68 87.54Q275.88 87.22 275.88 86.79Q275.88 86.38 275.70 86.06Q275.52 85.73 275.19 85.54Q274.86 85.35 274.41 85.35H272.00ZM272.00 84.13H274.18Q274.54 84.13 274.83 83.98Q275.11 83.84 275.29 83.56Q275.46 83.29 275.46 82.89Q275.46 82.37 275.11 82.04Q274.76 81.70 274.18 81.70H272.00Z M288.01 89.61Q286.96 89.61 286.15 89.18Q285.35 88.74 284.90 87.96Q284.44 87.19 284.44 86.13V80.49L285.76 80.48V86.06Q285.76 86.63 285.95 87.07Q286.14 87.50 286.47 87.79Q286.79 88.09 287.19 88.24Q287.59 88.38 288.01 88.38Q288.43 88.38 288.83 88.23Q289.23 88.08 289.55 87.79Q289.88 87.50 290.07 87.06Q290.25 86.63 290.25 86.06V80.48H291.57V86.13Q291.57 87.18 291.12 87.96Q290.66 88.74 289.86 89.18Q289.06 89.61 288.01 89.61Z M299.31 89.42V80.48H302.11Q302.23 80.48 302.57 80.49Q302.91 80.49 303.22 80.53Q304.27 80.67 304.99 81.29Q305.71 81.91 306.07 82.86Q306.44 83.81 306.44 84.95Q306.44 86.09 306.07 87.05Q305.71 88.00 304.99 88.62Q304.27 89.23 303.22 89.37Q302.91 89.41 302.57 89.41Q302.23 89.42 302.11 89.42ZM300.64 88.19H302.11Q302.32 88.19 302.61 88.17Q302.90 88.16 303.13 88.12Q303.81 87.99 304.24 87.53Q304.66 87.07 304.86 86.39Q305.06 85.71 305.06 84.95Q305.06 84.16 304.85 83.49Q304.65 82.81 304.22 82.36Q303.80 81.90 303.13 81.78Q302.90 81.73 302.61 81.72Q302.31 81.71 302.11 81.71H300.64Z M316.04 89.42V85.73L313.01 80.48H314.53L316.70 84.24L318.86 80.48H320.38L317.36 85.73V89.42Z M327.25 89.42V80.48H328.56L332.97 87.12V80.48H334.28V89.42H332.97L328.56 82.77V89.42Z M342.02 89.42V80.48H343.32V84.65L347.06 80.48H348.68L344.72 84.84L348.97 89.42H347.31L343.32 85.15V89.42Z M359.57 89.61Q358.23 89.61 357.29 89.02Q356.34 88.43 355.84 87.38Q355.34 86.33 355.34 84.95Q355.34 83.57 355.84 82.52Q356.34 81.47 357.29 80.88Q358.23 80.29 359.57 80.29Q360.91 80.29 361.85 80.88Q362.80 81.47 363.30 82.52Q363.79 83.57 363.79 84.95Q363.79 86.33 363.30 87.38Q362.80 88.43 361.85 89.02Q360.91 89.61 359.57 89.61ZM359.57 88.37Q360.52 88.38 361.15 87.95Q361.78 87.52 362.10 86.75Q362.42 85.97 362.42 84.95Q362.42 83.93 362.10 83.16Q361.78 82.39 361.15 81.96Q360.52 81.53 359.57 81.53Q358.62 81.52 357.99 81.94Q357.36 82.37 357.04 83.15Q356.73 83.93 356.72 84.95Q356.72 85.97 357.03 86.74Q357.35 87.51 357.99 87.94Q358.62 88.37 359.57 88.37Z M372.93 89.42 370.33 80.48H371.69L373.58 87.24L375.46 80.49L376.82 80.48L378.70 87.24L380.59 80.48H381.95L379.35 89.42H378.06L376.14 82.73L374.22 89.42Z M388.37 89.42 391.27 80.48H393.14L396.05 89.42H394.70L394.04 87.40H390.37L389.72 89.42ZM393.64 86.19 392.19 81.78 390.76 86.19Z" fill="#0F2A43"/></svg></a>
+<nav aria-label="Główna nawigacja">
+<a href="#uslugi">Usługi</a>
+<a href="#jak">Jak pracuję</a>
+<a href="#cennik">Cennik</a>
+<a href="#faq">Pytania</a>
+<a class="btn btn-p" href="#kontakt">Bezpłatna wycena</a>
+</nav>
+</div>
+</header>
+
+<main id="top">
+<div class="hero">
+<div class="wrap">
+<p class="kicker">Inteligentny dom · Trójmiasto</p>
+<h1>Inteligentny dom, który po prostu działa</h1>
+<p class="lead">Montuję i konfiguruję automatykę w mieszkaniach i domach: oświetlenie, rolety, ogrzewanie i czujniki w jednej aplikacji. Bez kucia ścian, z protokołem odbioru i wsparciem po montażu.</p>
+<div class="cta">
+<a class="btn btn-p" href="#kontakt">Zamów bezpłatną wycenę</a>
+<a class="btn btn-s" href="tel:+48792373885">Zadzwoń: 792 373 885</a>
+</div>
+<div class="facts">
+<div class="fact"><b>Inżynier elektryk</b><span>13 lat w automatyce i uruchamianiu instalacji</span></div>
+<div class="fact"><b>Uprawnienia SEP E i D</b><span>do 1 kV, również pomiary</span></div>
+<div class="fact"><b>Bez remontu</b><span>moduły w istniejących puszkach i rozdzielnicy</span></div>
+<div class="fact"><b>Gdańsk · Gdynia · Sopot</b><span>dojazd w cenie na terenie Trójmiasta</span></div>
+</div>
+</div>
+</div>
+
+<section id="uslugi">
+<div class="wrap">
+<p class="kicker">Usługi</p>
+<h2>Co mogę u Ciebie zautomatyzować</h2>
+<p class="lead">Smart home nie musi oznaczać dużej inwestycji. Zaczynamy od tego, co naprawdę ułatwi Ci dzień, a system można rozbudowywać krok po kroku.</p>
+<div class="grid">
+<div class="card">
+<svg viewBox="0 0 24 24" fill="none" stroke="#0B8A7C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.800 1-2.500A6 6 0 0 0 12 3z"/></svg>
+<h3>Oświetlenie</h3>
+<p>Sterowanie z telefonu, głosem i z dotychczasowych włączników. Sceny, harmonogramy, ściemnianie, światło reagujące na ruch.</p>
+</div>
+<div class="card">
+<svg viewBox="0 0 24 24" fill="none" stroke="#0B8A7C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M4 8h16M4 12h16M4 16h16"/></svg>
+<h3>Rolety i żaluzje</h3>
+<p>Automatyczne otwieranie rano i zamykanie o zmierzchu, sterowanie grupowe, ochrona przed nagrzewaniem latem.</p>
+</div>
+<div class="card">
+<svg viewBox="0 0 24 24" fill="none" stroke="#0B8A7C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 14.500V5a2 2 0 0 0-4 0v9.500a4 4 0 1 0 4 0z"/><path d="M16 7h4M16 11h3"/></svg>
+<h3>Ogrzewanie</h3>
+<p>Głowice i termostaty z harmonogramem dla każdego pomieszczenia. Niższa temperatura, gdy nikogo nie ma, i ciepły dom przed powrotem.</p>
+</div>
+<div class="card">
+<svg viewBox="0 0 24 24" fill="none" stroke="#0B8A7C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.500-3.200 7.800-8 9-4.800-1.200-8-4.500-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+<h3>Bezpieczeństwo</h3>
+<p>Czujniki zalania, dymu, otwarcia okien i drzwi. Powiadomienie na telefon, zanim mała awaria zmieni się w dużą szkodę.</p>
+</div>
+<div class="card">
+<svg viewBox="0 0 24 24" fill="none" stroke="#0B8A7C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.500" width="12" height="19" rx="2.500"/><path d="M10.500 18h3"/></svg>
+<h3>Jedna aplikacja</h3>
+<p>Łączę urządzenia różnych producentów w jednym miejscu: Google Home, Home Assistant, Shelly, Zigbee. Koniec z pięcioma aplikacjami.</p>
+</div>
+<div class="card">
+<svg viewBox="0 0 24 24" fill="none" stroke="#0B8A7C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.500 6.500a4 4 0 0 0 5 5L11 20a2.100 2.100 0 0 1-3-3z"/><path d="M14.500 6.500l3-3"/></svg>
+<h3>Naprawa i porządki</h3>
+<p>Masz już urządzenia smart, które działają niestabilnie albo wcale? Diagnozuję, porządkuję konfigurację i uruchamiam całość od nowa.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="jak" class="alt">
+<div class="wrap">
+<p class="kicker">Jak pracuję</p>
+<h2>Cztery kroki od rozmowy do działającego systemu</h2>
+<div class="steps">
+<div class="step"><h3>Rozmowa i zdjęcia</h3><p>Opowiadasz, co ma działać. Proszę o kilka zdjęć puszek i rozdzielnicy, żeby od razu podać realne widełki cenowe.</p></div>
+<div class="step"><h3>Wycena na piśmie</h3><p>Dostajesz listę urządzeń i prac z cenami. Bez ukrytych kosztów: znasz kwotę przed rozpoczęciem.</p></div>
+<div class="step"><h3>Montaż i konfiguracja</h3><p>Urządzenia przygotowuję wcześniej, więc montaż u Ciebie trwa krótko. Pracuję wieczorami i w soboty.</p></div>
+<div class="step"><h3>Odbiór i wsparcie</h3><p>Sprawdzamy razem każdą funkcję. Otrzymujesz protokół odbioru, krótką instrukcję i 12 miesięcy wsparcia zdalnego.</p></div>
+</div>
+</div>
+</section>
+
+<section id="cennik">
+<div class="wrap">
+<p class="kicker">Cennik</p>
+<h2>Jasne ceny, wycena przed rozpoczęciem</h2>
+<p class="lead">Ceny brutto za robociznę i konfigurację. Urządzenia wyceniam osobno, po cenach zakupu, albo montuję te, które już masz.</p>
+<div class="packs">
+<div class="pack">
+<h3>Start: oświetlenie</h3>
+<div class="price">od 890 zł</div>
+<ul><li>do 5 punktów świetlnych</li><li>sterowanie z telefonu i głosem</li><li>2 sceny, np. „Wychodzę” i „Dobranoc”</li><li>włączniki działają jak dotąd</li></ul>
+</div>
+<div class="pack top">
+<h3>Komfort: mieszkanie</h3>
+<div class="price">od 2 200 zł</div>
+<ul><li>do 10 punktów: światło i rolety</li><li>ogrzewanie w maks. 4 pomieszczeniach</li><li>centrala i jedna aplikacja</li><li>5 scen i harmonogramy</li></ul>
+</div>
+<div class="pack">
+<h3>Bezpieczny dom</h3>
+<div class="price">od 490 zł</div>
+<ul><li>do 6 czujników: zalanie, dym, okna</li><li>powiadomienia na telefon</li><li>test każdego czujnika przy odbiorze</li><li>możliwa rozbudowa o zawór wody</li></ul>
+</div>
+</div>
+<div class="tablebox">
+<table>
+<thead><tr><th scope="col">Usługa</th><th scope="col" class="p">Cena brutto</th></tr></thead>
+<tbody>
+<tr><td>Montaż i konfiguracja modułu oświetlenia<small>w puszce podtynkowej lub przy oprawie</small></td><td class="p">od 150 zł / punkt</td></tr>
+<tr><td>Montaż i konfiguracja sterownika rolety<small>z kalibracją położenia</small></td><td class="p">od 180 zł / szt.</td></tr>
+<tr><td>Głowica termostatyczna lub termostat<small>z harmonogramem</small></td><td class="p">od 120 zł / szt.</td></tr>
+<tr><td>Czujnik: zalanie, dym, ruch, otwarcie<small>montaż i powiadomienia</small></td><td class="p">od 60 zł / szt.</td></tr>
+<tr><td>Konfiguracja centrali lub bramki i aplikacji<small>Zigbee, Shelly, Google Home</small></td><td class="p">od 250 zł</td></tr>
+<tr><td>Home Assistant: instalacja i uruchomienie<small>na urządzeniu klienta lub dobranym</small></td><td class="p">od 430 zł</td></tr>
+<tr><td>Home Assistant: czytelny panel sterowania<small>dla całej rodziny, również na tablecie</small></td><td class="p">od 900 zł</td></tr>
+<tr><td>Scena lub automatyzacja<small>np. „Wychodzę”, „Kino”, „Poranek”</small></td><td class="p">od 100 zł</td></tr>
+<tr><td>Diagnoza i naprawa istniejącego systemu<small>rozliczenie godzinowe</small></td><td class="p">180 zł / godz.</td></tr>
+<tr><td>Wizyta z wyceną na miejscu<small>zaliczana na poczet zlecenia</small></td><td class="p">150 zł</td></tr>
+</tbody>
+</table>
+</div>
+<p class="note">Minimalna wartość zlecenia: 300 zł. Dojazd na terenie Trójmiasta w cenie. Podane ceny są orientacyjne i nie stanowią oferty w rozumieniu Kodeksu cywilnego; ostateczną kwotę potwierdzam w pisemnej wycenie przed rozpoczęciem prac.</p>
+</div>
+</section>
+
+<section class="alt">
+<div class="wrap">
+<p class="kicker">Dlaczego Domkontrol</p>
+<h2>Podejście inżynierskie, nie „gadżety”</h2>
+<div class="grid">
+<div class="card"><h3>Elektryka zrobiona poprawnie</h3><p>Pracuję z uprawnieniami SEP w zakresie eksploatacji i dozoru do 1 kV. Dobieram moduły do obciążenia i rodzaju instalacji, a nie odwrotnie.</p></div>
+<div class="card"><h3>System działa lokalnie</h3><p>Tam, gdzie to możliwe, automatyka działa w Twojej sieci domowej. Światło włączysz także wtedy, gdy zabraknie internetu.</p></div>
+<div class="card"><h3>Dokumentacja i wsparcie</h3><p>Po montażu dostajesz protokół odbioru, listę urządzeń i dostępy na własnym koncie. System należy do Ciebie, nie do instalatora.</p></div>
+</div>
+</div>
+</section>
+
+<section id="faq">
+<div class="wrap">
+<p class="kicker">Pytania</p>
+<h2>Najczęstsze pytania</h2>
+<div class="faq">
+<details><summary>Czy trzeba kuć ściany albo wymieniać instalację?</summary><p>W większości mieszkań nie. Moduły montuję w istniejących puszkach za włącznikami lub w rozdzielnicy. Jeśli puszka jest za płytka albo brakuje przewodu neutralnego, proponuję inne rozwiązanie jeszcze przed wyceną.</p></details>
+<details><summary>Czy dotychczasowe włączniki będą działać?</summary><p>Tak. Włączniki ścienne działają jak dotąd, a sterowanie z telefonu i automatyka są dodatkiem. Domownicy i goście nie muszą niczego się uczyć.</p></details>
+<details><summary>Mam już kupione urządzenia. Czy je zamontujesz?</summary><p>Tak, o ile nadają się do Twojej instalacji. Przed montażem sprawdzam modele i mówię wprost, jeśli coś nie będzie działać stabilnie.</p></details>
+<details><summary>Co się stanie, gdy zabraknie internetu lub Wi-Fi?</summary><p>Włączniki ścienne działają zawsze. Przy rozwiązaniach lokalnych działają także harmonogramy i sceny; bez internetu niedostępne jest tylko sterowanie spoza domu.</p></details>
+<details><summary>Ile trwa montaż?</summary><p>Pojedyncze pomieszczenie to zwykle 2–3 godziny, mieszkanie w pakiecie Komfort jeden dzień. Dokładny czas podaję w wycenie.</p></details>
+<details><summary>Gdzie dojeżdżasz?</summary><p>Gdańsk, Gdynia, Sopot i najbliższe okolice Trójmiasta. Dalsze lokalizacje ustalamy indywidualnie.</p></details>
+</div>
+</div>
+</section>
+
+<section id="kontakt" class="contact">
+<div class="wrap">
+<p class="kicker">Kontakt</p>
+<h2>Opisz, co ma działać. Odpowiem z wyceną</h2>
+<div class="cgrid">
+<div>
+<a class="big" href="tel:+48792373885">+48 792 373 885</a>
+<p style="margin-top:6px">Telefon i SMS. Jeśli nie odbieram, oddzwonię tego samego dnia</p>
+<p style="margin-top:22px"><a class="mail" href="mailto:domkontrol.office@gmail.com">domkontrol.office@gmail.com</a></p>
+<p style="margin-top:22px">Aby wycena była dokładna, dołącz 2–3 zdjęcia: puszka pod włącznikiem, rozdzielnica oraz modele urządzeń, jeśli już je masz.</p>
+</div>
+<form id="f" novalidate>
+<label>Imię<input name="imie" autocomplete="given-name" required></label>
+<label>Telefon lub e-mail<input name="kontakt" autocomplete="tel" required></label>
+<label>Co chcesz zautomatyzować?<textarea name="opis" required></textarea></label>
+<button class="btn btn-p" type="submit">Przygotuj wiadomość</button>
+<p class="msg" id="m" role="status">Formularz otworzy Twój program pocztowy z gotową wiadomością. Możesz też po prostu zadzwonić.</p>
+</form>
+</div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="wrap frow">
+<div><svg role="img" aria-label="Domkontrol – automatyka budynkowa" xmlns="http://www.w3.org/2000/svg" width="420" height="124" viewBox="0 0 420 124"><g transform="translate(24 24) scale(1.1875)"><rect width="64" height="64" rx="15" fill="#FFFFFF"/><path d="M17 48 H45 V29 L32 18 L19 29 V39 H29" stroke="#0F2A43" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="34" cy="39" r="4.2" fill="#0B8A7C"/></g><path d="M120.52 60.50V34.58H128.91Q129.21 34.58 130.17 34.60Q131.12 34.61 132.00 34.72Q135.14 35.10 137.31 36.90Q139.49 38.70 140.63 41.47Q141.76 44.24 141.76 47.54Q141.76 50.83 140.63 53.60Q139.49 56.38 137.31 58.18Q135.14 59.98 132.00 60.35Q131.12 60.46 130.17 60.48Q129.21 60.50 128.91 60.50ZM125.49 55.89H128.91Q129.39 55.89 130.22 55.86Q131.05 55.84 131.72 55.71Q133.41 55.37 134.48 54.13Q135.55 52.88 136.06 51.14Q136.58 49.39 136.58 47.54Q136.58 45.59 136.05 43.85Q135.51 42.10 134.43 40.90Q133.35 39.69 131.72 39.37Q131.05 39.22 130.22 39.20Q129.39 39.19 128.91 39.19H125.49Z M160.70 61.04Q156.81 61.04 153.99 59.35Q151.17 57.65 149.65 54.61Q148.13 51.57 148.13 47.54Q148.13 43.51 149.65 40.46Q151.17 37.42 153.99 35.73Q156.81 34.04 160.70 34.04Q164.58 34.04 167.40 35.73Q170.22 37.42 171.74 40.46Q173.26 43.51 173.26 47.54Q173.26 51.57 171.74 54.61Q170.22 57.65 167.40 59.35Q164.58 61.04 160.70 61.04ZM160.70 56.43Q163.16 56.47 164.80 55.37Q166.44 54.27 167.26 52.25Q168.08 50.24 168.08 47.54Q168.08 44.84 167.26 42.86Q166.44 40.88 164.80 39.78Q163.16 38.68 160.70 38.65Q158.23 38.61 156.59 39.71Q154.95 40.81 154.13 42.82Q153.32 44.84 153.32 47.54Q153.32 50.24 154.13 52.22Q154.95 54.20 156.59 55.30Q158.23 56.39 160.70 56.43Z M180.35 60.50V34.58H184.74L193.31 51.79L201.88 34.58H206.27V60.50H201.70V45.02L194.18 60.50H192.45L184.92 45.02V60.50Z" fill="#FFFFFF"/><path d="M214.80 60.50V34.58H218.01V46.75L229.35 34.58H233.38L221.61 47.16L234.30 60.50H230.16L218.01 47.83V60.50Z M250.97 61.04Q247.10 61.04 244.40 59.33Q241.70 57.62 240.28 54.58Q238.87 51.53 238.87 47.54Q238.87 43.54 240.28 40.50Q241.70 37.46 244.40 35.75Q247.10 34.04 250.97 34.04Q254.85 34.04 257.55 35.75Q260.25 37.46 261.66 40.50Q263.06 43.54 263.06 47.54Q263.06 51.53 261.66 54.58Q260.25 57.62 257.55 59.33Q254.85 61.04 250.97 61.04ZM250.97 57.98Q253.86 58.00 255.80 56.67Q257.73 55.35 258.70 52.99Q259.66 50.63 259.66 47.54Q259.66 44.42 258.70 42.08Q257.73 39.74 255.80 38.43Q253.86 37.12 250.97 37.10Q248.07 37.08 246.15 38.39Q244.23 39.71 243.26 42.07Q242.29 44.42 242.27 47.54Q242.25 50.63 243.23 52.97Q244.20 55.31 246.13 56.64Q248.07 57.96 250.97 57.98Z M270.15 60.50V34.58H273.39L286.91 54.83V34.58H290.15V60.50H286.91L273.39 40.23V60.50Z M305.36 60.50V37.62H296.52V34.58H317.40V37.62H308.57V60.50Z M323.78 60.50V34.58H334.02Q334.40 34.58 334.92 34.61Q335.44 34.63 335.93 34.72Q338.03 35.05 339.46 36.16Q340.89 37.28 341.61 38.98Q342.33 40.68 342.33 42.75Q342.33 45.76 340.77 47.95Q339.67 49.50 337.87 50.24L342.87 60.50H339.20L334.56 50.92H326.98V60.50ZM326.98 47.88H333.91Q334.25 47.88 334.69 47.84Q335.13 47.81 335.53 47.72Q336.77 47.43 337.55 46.67Q338.34 45.90 338.70 44.87Q339.06 43.83 339.06 42.75Q339.06 41.67 338.70 40.64Q338.34 39.60 337.55 38.83Q336.77 38.05 335.53 37.78Q335.13 37.67 334.69 37.65Q334.25 37.62 333.91 37.62H326.98Z M360.98 61.04Q357.11 61.04 354.41 59.33Q351.71 57.62 350.30 54.58Q348.89 51.53 348.89 47.54Q348.89 43.54 350.30 40.50Q351.71 37.46 354.41 35.75Q357.11 34.04 360.98 34.04Q364.87 34.04 367.57 35.75Q370.27 37.46 371.67 40.50Q373.08 43.54 373.08 47.54Q373.08 51.53 371.67 54.58Q370.27 57.62 367.57 59.33Q364.87 61.04 360.98 61.04ZM360.98 57.98Q363.88 58.00 365.81 56.67Q367.75 55.35 368.71 52.99Q369.68 50.63 369.68 47.54Q369.68 44.42 368.71 42.08Q367.75 39.74 365.81 38.43Q363.88 37.12 360.98 37.10Q358.08 37.08 356.17 38.39Q354.25 39.71 353.28 42.07Q352.31 44.42 352.29 47.54Q352.27 50.63 353.24 52.97Q354.21 55.31 356.15 56.64Q358.08 57.96 360.98 57.98Z M380.53 60.50V34.58H383.73V57.46H395.76V60.50Z" fill="#FFFFFF"/><rect x="118.00" y="69.50" width="278.30" height="1.98" fill="#2DD4BF"/><path d="M118.25 89.42 121.15 80.48H123.02L125.93 89.42H124.58L123.92 87.40H120.25L119.60 89.42ZM123.52 86.19 122.07 81.78 120.65 86.19Z M136.61 89.61Q135.56 89.61 134.76 89.18Q133.95 88.74 133.50 87.96Q133.05 87.19 133.05 86.13V80.49L134.36 80.48V86.06Q134.36 86.63 134.56 87.07Q134.75 87.50 135.07 87.79Q135.39 88.09 135.79 88.24Q136.20 88.38 136.61 88.38Q137.03 88.38 137.43 88.23Q137.83 88.08 138.16 87.79Q138.48 87.50 138.67 87.06Q138.86 86.63 138.86 86.06V80.48H140.18V86.13Q140.18 87.18 139.72 87.96Q139.27 88.74 138.47 89.18Q137.66 89.61 136.61 89.61Z M150.14 89.42V81.70H147.17V80.48H154.42V81.70H151.44V89.42Z M165.14 89.61Q163.80 89.61 162.86 89.02Q161.91 88.43 161.41 87.38Q160.91 86.33 160.91 84.95Q160.91 83.57 161.41 82.52Q161.91 81.47 162.86 80.88Q163.80 80.29 165.14 80.29Q166.48 80.29 167.42 80.88Q168.37 81.47 168.87 82.52Q169.36 83.57 169.36 84.95Q169.36 86.33 168.87 87.38Q168.37 88.43 167.42 89.02Q166.48 89.61 165.14 89.61ZM165.14 88.37Q166.09 88.38 166.72 87.95Q167.35 87.52 167.67 86.75Q167.98 85.97 167.98 84.95Q167.98 83.93 167.67 83.16Q167.35 82.39 166.72 81.96Q166.09 81.53 165.14 81.53Q164.19 81.52 163.56 81.94Q162.93 82.37 162.61 83.15Q162.30 83.93 162.29 84.95Q162.28 85.97 162.60 86.74Q162.92 87.51 163.55 87.94Q164.19 88.37 165.14 88.37Z M176.60 89.42V80.48H177.78L181.02 87.20L184.24 80.48H185.43V89.41H184.20V83.30L181.31 89.42H180.72L177.83 83.30V89.42Z M192.55 89.42 195.45 80.48H197.32L200.23 89.42H198.88L198.22 87.40H194.55L193.89 89.42ZM197.82 86.19 196.37 81.78 194.94 86.19Z M209.57 89.42V81.70H206.60V80.48H213.85V81.70H210.87V89.42Z M222.99 89.42V85.73L219.97 80.48H221.48L223.65 84.24L225.82 80.48H227.33L224.31 85.73V89.42Z M234.20 89.42V80.48H235.50V84.65L239.25 80.48H240.86L236.90 84.84L241.15 89.42H239.49L235.50 85.15V89.42Z M247.40 89.42 250.31 80.48H252.17L255.08 89.42H253.73L253.07 87.40H249.40L248.75 89.42ZM252.67 86.19 251.22 81.78 249.80 86.19Z  M270.68 89.42V80.48H274.20Q275.05 80.48 275.62 80.83Q276.20 81.17 276.49 81.72Q276.79 82.27 276.79 82.88Q276.79 83.62 276.43 84.15Q276.18 84.50 275.84 84.70Q276.41 84.93 276.75 85.38Q277.21 86.00 277.21 86.81Q277.21 87.60 276.89 88.19Q276.58 88.77 275.98 89.10Q275.38 89.42 274.53 89.42ZM272.00 88.19H274.33Q274.77 88.19 275.12 88.02Q275.47 87.85 275.68 87.54Q275.88 87.22 275.88 86.79Q275.88 86.38 275.70 86.06Q275.52 85.73 275.19 85.54Q274.86 85.35 274.41 85.35H272.00ZM272.00 84.13H274.18Q274.54 84.13 274.83 83.98Q275.11 83.84 275.29 83.56Q275.46 83.29 275.46 82.89Q275.46 82.37 275.11 82.04Q274.76 81.70 274.18 81.70H272.00Z M288.01 89.61Q286.96 89.61 286.15 89.18Q285.35 88.74 284.90 87.96Q284.44 87.19 284.44 86.13V80.49L285.76 80.48V86.06Q285.76 86.63 285.95 87.07Q286.14 87.50 286.47 87.79Q286.79 88.09 287.19 88.24Q287.59 88.38 288.01 88.38Q288.43 88.38 288.83 88.23Q289.23 88.08 289.55 87.79Q289.88 87.50 290.07 87.06Q290.25 86.63 290.25 86.06V80.48H291.57V86.13Q291.57 87.18 291.12 87.96Q290.66 88.74 289.86 89.18Q289.06 89.61 288.01 89.61Z M299.31 89.42V80.48H302.11Q302.23 80.48 302.57 80.49Q302.91 80.49 303.22 80.53Q304.27 80.67 304.99 81.29Q305.71 81.91 306.07 82.86Q306.44 83.81 306.44 84.95Q306.44 86.09 306.07 87.05Q305.71 88.00 304.99 88.62Q304.27 89.23 303.22 89.37Q302.91 89.41 302.57 89.41Q302.23 89.42 302.11 89.42ZM300.64 88.19H302.11Q302.32 88.19 302.61 88.17Q302.90 88.16 303.13 88.12Q303.81 87.99 304.24 87.53Q304.66 87.07 304.86 86.39Q305.06 85.71 305.06 84.95Q305.06 84.16 304.85 83.49Q304.65 82.81 304.22 82.36Q303.80 81.90 303.13 81.78Q302.90 81.73 302.61 81.72Q302.31 81.71 302.11 81.71H300.64Z M316.04 89.42V85.73L313.01 80.48H314.53L316.70 84.24L318.86 80.48H320.38L317.36 85.73V89.42Z M327.25 89.42V80.48H328.56L332.97 87.12V80.48H334.28V89.42H332.97L328.56 82.77V89.42Z M342.02 89.42V80.48H343.32V84.65L347.06 80.48H348.68L344.72 84.84L348.97 89.42H347.31L343.32 85.15V89.42Z M359.57 89.61Q358.23 89.61 357.29 89.02Q356.34 88.43 355.84 87.38Q355.34 86.33 355.34 84.95Q355.34 83.57 355.84 82.52Q356.34 81.47 357.29 80.88Q358.23 80.29 359.57 80.29Q360.91 80.29 361.85 80.88Q362.80 81.47 363.30 82.52Q363.79 83.57 363.79 84.95Q363.79 86.33 363.30 87.38Q362.80 88.43 361.85 89.02Q360.91 89.61 359.57 89.61ZM359.57 88.37Q360.52 88.38 361.15 87.95Q361.78 87.52 362.10 86.75Q362.42 85.97 362.42 84.95Q362.42 83.93 362.10 83.16Q361.78 82.39 361.15 81.96Q360.52 81.53 359.57 81.53Q358.62 81.52 357.99 81.94Q357.36 82.37 357.04 83.15Q356.73 83.93 356.72 84.95Q356.72 85.97 357.03 86.74Q357.35 87.51 357.99 87.94Q358.62 88.37 359.57 88.37Z M372.93 89.42 370.33 80.48H371.69L373.58 87.24L375.46 80.49L376.82 80.48L378.70 87.24L380.59 80.48H381.95L379.35 89.42H378.06L376.14 82.73L374.22 89.42Z M388.37 89.42 391.27 80.48H393.14L396.05 89.42H394.70L394.04 87.40H390.37L389.72 89.42ZM393.64 86.19 392.19 81.78 390.76 86.19Z" fill="#FFFFFF"/></svg></div>
+<div>
+<div>Domkontrol · inteligentny dom i automatyka budynkowa · Trójmiasto</div>
+<div>tel. +48 792 373 885 · domkontrol.office@gmail.com</div>
+</div>
+</div>
+</footer>
+
+<script>
+document.getElementById('f').addEventListener('submit',function(e){
+  e.preventDefault();
+  var d=new FormData(this),m=document.getElementById('m');
+  if(!d.get('imie')||!d.get('kontakt')||!d.get('opis')){m.textContent='Uzupełnij wszystkie trzy pola, żebym mógł odpowiedzieć.';return;}
+  var body='Imię: '+d.get('imie')+'\nKontakt: '+d.get('kontakt')+'\n\n'+d.get('opis');
+  var link='mailto:domkontrol.office@gmail.com?subject='+encodeURIComponent('Zapytanie o wycenę – smart home')+'&body='+encodeURIComponent(body);
+  m.textContent='Jeśli program pocztowy się nie otworzył, napisz na domkontrol.office@gmail.com lub zadzwoń: 792 373 885.';
+  try{window.location.href=link;}catch(err){}
+});
+</script>
+</body>
+</html>
