@@ -4,105 +4,257 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Domkontrol – inteligentny dom i automatyka budynkowa | Trójmiasto</title>
-<meta name="description" content="Montaż i konfiguracja inteligentnego domu w Trójmieście: oświetlenie, rolety, ogrzewanie, czujniki, Home Assistant. Inżynier elektryk z uprawnieniami SEP. Wycena: 792 373 885.">
+<meta name="description" content="Montaż i konfiguracja inteligentnego domu w Trójmieście: oświetlenie, rolety, ogrzewanie, czujniki, Home Assistant. Bez kucia ścian. Inżynier elektryk z uprawnieniami SEP. Tel. 792 373 885.">
+<script>document.documentElement.classList.add('js')</script>
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png">
 <link rel="apple-touch-icon" href="favicon-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;800&family=Inter:wght@400;600&display=swap">
 <style>
-:root{--navy:#0F2A43;--teal:#0B8A7C;--teal-l:#2DD4BF;--grey:#3D5266;--bg:#F2F6F8;--line:#DCE4EA;--white:#fff}
+:root{--navy:#0F2A43;--navy-2:#163652;--teal:#0B8A7C;--teal-d:#087267;--teal-l:#2DD4BF;--grey:#3D5266;--bg:#F2F6F8;--line:#DCE4EA;--white:#fff;--ease:cubic-bezier(.2,.7,.2,1)}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--navy);background:var(--white);line-height:1.6;font-size:17px}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--navy);background:var(--white);line-height:1.6;font-size:17px;overflow-x:hidden}
 h1,h2,h3{font-family:Manrope,system-ui,sans-serif;line-height:1.2;margin:0}
-h1{font-size:clamp(2rem,5vw,3.1rem);font-weight:800;letter-spacing:-.01em}
-h2{font-size:clamp(1.5rem,3.4vw,2.1rem);font-weight:800}
+h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:800;letter-spacing:-.01em}
+h2{font-size:clamp(1.55rem,3.4vw,2.2rem);font-weight:800}
 h3{font-size:1.1rem;font-weight:800}
 p{margin:0}
 a{color:var(--teal)}
-.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
-section{padding:72px 0}
-.kicker{font-family:Manrope,sans-serif;font-weight:600;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
-.lead{color:var(--grey);font-size:1.08rem;max-width:62ch;margin-top:14px}
-header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line)}
-.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}
-.logo svg{height:52px;width:auto;display:block}
-nav{display:flex;gap:22px;flex-wrap:wrap;align-items:center}
-nav a{color:var(--navy);text-decoration:none;font-weight:600;font-size:.95rem;padding:10px 0}
-nav a:hover{color:var(--teal)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 22px;border-radius:10px;font-family:Manrope,sans-serif;font-weight:800;font-size:1rem;text-decoration:none;border:2px solid transparent;cursor:pointer}
-.btn-p{background:var(--teal);color:#fff}
-.btn-p:hover{background:#087267}
+.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+section{padding:80px 0;position:relative}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-family:Manrope,sans-serif;font-weight:600;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
+.kicker::before{content:"";width:22px;height:2px;background:currentColor;border-radius:2px}
+.lead{color:var(--grey);font-size:1.08rem;max-width:64ch;margin-top:14px}
+.alt{background:var(--bg)}
+
+/* header */
+header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s}
+header.scrolled{border-bottom-color:var(--line);box-shadow:0 6px 24px rgba(15,42,67,.06)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:74px}
+.logo svg{height:50px;width:auto;display:block}
+nav{display:flex;gap:22px;align-items:center}
+nav a{color:var(--navy);text-decoration:none;font-weight:600;font-size:.95rem;padding:10px 0;position:relative}
+nav a.l::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:2px;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
+nav a.l:hover::after{transform:scaleX(1)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 22px;border-radius:10px;font-family:Manrope,sans-serif;font-weight:800;font-size:1rem;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .2s var(--ease),background .2s,box-shadow .2s,color .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-p{background:var(--teal);color:#fff;box-shadow:0 8px 20px rgba(11,138,124,.25)}
+.btn-p:hover{background:var(--teal-d);box-shadow:0 12px 26px rgba(11,138,124,.32)}
 .btn-s{background:transparent;color:var(--navy);border-color:var(--navy)}
 .btn-s:hover{background:var(--navy);color:#fff}
-nav .btn{padding:10px 18px;color:#fff}
-.hero{background:var(--navy);color:#fff;padding:84px 0}
+.btn svg{width:18px;height:18px}
+nav .btn{padding:10px 18px;min-height:44px}
+
+/* hero */
+.hero{background:var(--navy);color:#fff;padding:76px 0 70px;overflow:hidden;position:relative}
+.hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(45,212,191,.13) 1px,transparent 1px);background-size:26px 26px;mask-image:linear-gradient(120deg,transparent 30%,#000 75%);-webkit-mask-image:linear-gradient(120deg,transparent 30%,#000 75%)}
+.hgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;position:relative}
 .hero .kicker{color:var(--teal-l)}
-.hero p.lead{color:#D5DFE7}
-.hero .btn-s{color:#fff;border-color:#fff}
+.hero .lead{color:#D5DFE7}
+.hero .btn-s{color:#fff;border-color:rgba(255,255,255,.8)}
 .hero .btn-s:hover{background:#fff;color:var(--navy)}
 .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
-.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:44px}
-.fact{border:1px solid rgba(255,255,255,.22);border-radius:12px;padding:16px 18px}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:48px;position:relative}
+.fact{border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:16px 18px;background:rgba(255,255,255,.03);transition:border-color .3s,background .3s}
+.fact:hover{border-color:var(--teal-l);background:rgba(45,212,191,.06)}
 .fact b{display:block;font-family:Manrope,sans-serif;font-weight:800;font-size:1.02rem}
 .fact span{color:#C9D6E0;font-size:.93rem}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px;margin-top:36px}
-.card{background:var(--bg);border-radius:14px;padding:24px}
-.card svg{width:34px;height:34px;margin-bottom:14px}
-.card p{color:var(--grey);margin-top:8px;font-size:.98rem}
-.alt{background:var(--bg)}
+.hvis{width:100%;max-width:500px;justify-self:end}
+.hvis svg{width:100%;height:auto;display:block;overflow:visible}
+.draw{stroke-dasharray:760;stroke-dashoffset:760;animation:draw 2.4s var(--ease) .2s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.flow{stroke-dasharray:4 7;animation:flow 1.6s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-22}}
+.pulse{transform-box:fill-box;transform-origin:center;animation:pulse 2.4s ease-out infinite}
+@keyframes pulse{0%{transform:scale(1);opacity:.55}100%{transform:scale(3.4);opacity:0}}
+.node{transform-box:fill-box;transform-origin:center;opacity:0;animation:pop .6s var(--ease) forwards}
+@keyframes pop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:scale(1)}}
+.glow{animation:glow 4s ease-in-out infinite}
+@keyframes glow{0%,40%{fill:rgba(255,255,255,.04)}50%,90%{fill:rgba(245,197,66,.14)}100%{fill:rgba(255,255,255,.04)}}
+.bulb{animation:bulb 4s ease-in-out infinite}
+@keyframes bulb{0%,40%{stroke:#C9D6E0}50%,90%{stroke:#F5C542}100%{stroke:#C9D6E0}}
+.blind{animation:blind 6s var(--ease) infinite}
+@keyframes blind{0%,15%{transform:scaleY(1)}45%,70%{transform:scaleY(.25)}100%{transform:scaleY(1)}}
+.temp{animation:temp 5s ease-in-out infinite;transform-box:fill-box;transform-origin:bottom}
+@keyframes temp{0%,100%{transform:scaleY(.45)}50%{transform:scaleY(1)}}
+.tag{font:600 11px Inter,sans-serif;fill:#C9D6E0}
+
+/* reveal */
+.js .rv{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.js .rv.in{opacity:1;transform:none}
+.fact{animation:fadeUp .8s var(--ease) both}
+.fact:nth-child(2){animation-delay:.12s}.fact:nth-child(3){animation-delay:.24s}.fact:nth-child(4){animation-delay:.36s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}.d5{transition-delay:.4s}
+
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:38px}
+.card{background:var(--bg);border-radius:16px;padding:26px;border:1px solid transparent;transition:transform .3s var(--ease),box-shadow .3s,border-color .3s}
+.card:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(15,42,67,.09);border-color:var(--line)}
 .alt .card{background:#fff}
-.steps{counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:36px}
-.step{background:#fff;border-radius:14px;padding:24px;counter-increment:s}
-.step::before{content:counter(s);display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:var(--navy);color:#fff;font-family:Manrope,sans-serif;font-weight:800;margin-bottom:14px}
-.step p{color:var(--grey);margin-top:8px;font-size:.98rem}
-.tablebox{overflow-x:auto;margin-top:30px;border:1px solid var(--line);border-radius:14px}
+.card p{color:var(--grey);margin-top:8px;font-size:.98rem}
+.ico{width:48px;height:48px;border-radius:12px;background:rgba(11,138,124,.1);display:flex;align-items:center;justify-content:center;margin-bottom:16px;transition:background .3s,transform .4s var(--ease)}
+.ico svg{width:26px;height:26px}
+.card:hover .ico{background:var(--teal);transform:rotate(-6deg) scale(1.05)}
+.card:hover .ico svg{stroke:#fff}
+
+/* pains */
+.pains{background:linear-gradient(180deg,#fff 0%,var(--bg) 100%)}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}
+.pain{background:#fff;border-radius:16px;padding:24px;border:1px solid var(--line);position:relative;overflow:hidden;transition:transform .3s var(--ease),box-shadow .3s}
+.pain:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(15,42,67,.08)}
+.pain::after{content:"";position:absolute;left:0;top:0;height:3px;width:0;background:linear-gradient(90deg,#E36B5B,var(--teal));transition:width .9s var(--ease)}
+.pain.in::after{width:100%}
+.pain .pi{width:42px;height:42px;border-radius:50%;background:#FDECEA;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.pain .pi svg{width:22px;height:22px}
+.pain p{color:var(--grey);margin-top:8px;font-size:.96rem}
+.turn{margin-top:34px;display:flex;align-items:center;gap:14px;font-family:Manrope,sans-serif;font-weight:800;font-size:1.15rem}
+.turn a{display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+.turn svg{width:20px;height:20px;animation:bob 1.8s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(5px)}}
+
+/* paths */
+.paths{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}
+.path{position:relative;border-radius:18px;padding:28px;background:#fff;border:2px solid var(--line);display:flex;flex-direction:column;gap:12px;transition:border-color .3s,transform .3s var(--ease),box-shadow .3s;overflow:hidden}
+.path:hover{border-color:var(--teal);transform:translateY(-5px);box-shadow:0 18px 40px rgba(15,42,67,.1)}
+.path .pv{height:120px;border-radius:12px;background:var(--navy);display:flex;align-items:center;justify-content:center;margin-bottom:6px;position:relative;overflow:hidden}
+.path .pv svg{height:96px;width:auto}
+.path ul{margin:0;padding-left:20px;color:var(--grey);font-size:.96rem}
+.path li{margin:4px 0}
+.path .go{margin-top:auto;font-family:Manrope,sans-serif;font-weight:800;text-decoration:none;display:inline-flex;align-items:center;gap:8px;padding-top:8px}
+.path .go svg{width:18px;height:18px;transition:transform .3s var(--ease)}
+.path:hover .go svg{transform:translateX(5px)}
+.win{animation:win 3s ease-in-out infinite}
+.win.b{animation-delay:1s}.win.c{animation-delay:2s}
+@keyframes win{0%,30%{fill:rgba(255,255,255,.08)}45%,75%{fill:#F5C542}100%{fill:rgba(255,255,255,.08)}}
+
+/* seasonal */
+.season{background:var(--navy);color:#fff;overflow:hidden}
+.season .kicker{color:var(--teal-l)}
+.season .lead{color:#D5DFE7}
+.snow{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.snow i{position:absolute;top:-10px;width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.55);animation:fall linear infinite}
+@keyframes fall{to{transform:translate3d(30px,620px,0);opacity:0}}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(45,212,191,.14);color:var(--teal-l);border:1px solid rgba(45,212,191,.4);padding:6px 12px;border-radius:999px;font-weight:600;font-size:.85rem;margin-top:16px}
+.badge svg{width:16px;height:16px;animation:spin 9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:38px;position:relative}
+.set{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:10px;transition:transform .3s var(--ease),background .3s,border-color .3s}
+.set:hover{transform:translateY(-5px);background:rgba(255,255,255,.08);border-color:var(--teal-l)}
+.set .si{width:46px;height:46px;border-radius:12px;background:rgba(45,212,191,.15);display:flex;align-items:center;justify-content:center}
+.set .si svg{width:26px;height:26px}
+.set .price{font-family:Manrope,sans-serif;font-weight:800;font-size:1.5rem;color:#fff}
+.set ul{margin:0;padding-left:18px;color:#C9D6E0;font-size:.93rem}
+.set li{margin:4px 0}
+.snote{color:#AFC1CF;font-size:.9rem;margin-top:22px;max-width:80ch;position:relative}
+
+/* steps */
+.steps{position:relative;display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:46px}
+.track{position:absolute;top:22px;left:calc(100%/12);right:calc(100%/12);height:3px;background:var(--line);border-radius:3px;overflow:hidden}
+.track span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--teal-l));transition:width 2.2s var(--ease)}
+.steps.in .track span{width:100%}
+.step{position:relative;text-align:center}
+.num{width:46px;height:46px;border-radius:50%;margin:0 auto 14px;background:#fff;border:3px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:Manrope,sans-serif;font-weight:800;color:var(--navy);position:relative;z-index:1;transition:background .4s,border-color .4s,color .4s}
+.steps.in .num{background:var(--navy);border-color:var(--teal);color:#fff}
+.steps.in .step:nth-child(2) .num{transition-delay:.1s}.steps.in .step:nth-child(3) .num{transition-delay:.45s}.steps.in .step:nth-child(4) .num{transition-delay:.8s}.steps.in .step:nth-child(5) .num{transition-delay:1.15s}.steps.in .step:nth-child(6) .num{transition-delay:1.5s}.steps.in .step:nth-child(7) .num{transition-delay:1.85s}
+.step h3{font-size:1rem}
+.step p{color:var(--grey);font-size:.92rem;margin-top:6px}
+
+/* pricing */
+.tablebox{overflow-x:auto;margin-top:30px;border:1px solid var(--line);border-radius:14px;background:#fff}
 table{border-collapse:collapse;width:100%;min-width:520px;font-size:.98rem}
 th,td{text-align:left;padding:14px 18px;border-bottom:1px solid var(--line);vertical-align:top}
 th{font-family:Manrope,sans-serif;font-weight:800;background:var(--bg)}
+tbody tr{transition:background .2s}
+tbody tr:hover{background:#F7FAFB}
 tr:last-child td{border-bottom:0}
 td.p,th.p{text-align:right;white-space:nowrap;font-family:Manrope,sans-serif;font-weight:800}
 td small{display:block;color:var(--grey);font-size:.88rem}
-.packs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:36px}
-.pack{border:2px solid var(--line);border-radius:14px;padding:26px;display:flex;flex-direction:column;gap:10px}
+.packs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:38px}
+.pack{border:2px solid var(--line);border-radius:16px;padding:26px;display:flex;flex-direction:column;gap:10px;background:#fff;transition:transform .3s var(--ease),box-shadow .3s,border-color .3s;position:relative}
+.pack:hover{transform:translateY(-5px);box-shadow:0 18px 38px rgba(15,42,67,.1);border-color:var(--teal)}
 .pack.top{border-color:var(--teal)}
+.pack.top::before{content:"Najczęściej wybierany";position:absolute;top:-13px;left:22px;background:var(--teal);color:#fff;font:700 .75rem Manrope,sans-serif;padding:4px 10px;border-radius:999px}
 .pack .price{font-family:Manrope,sans-serif;font-weight:800;font-size:1.7rem}
 .pack ul{margin:6px 0 0;padding-left:20px;color:var(--grey);font-size:.97rem}
 .pack li{margin:4px 0}
 .note{color:var(--grey);font-size:.92rem;margin-top:18px;max-width:80ch}
-details{border-bottom:1px solid var(--line);padding:6px 0}
-summary{cursor:pointer;font-family:Manrope,sans-serif;font-weight:800;padding:14px 0;min-height:48px}
-details p{color:var(--grey);padding:0 0 16px;max-width:75ch}
+
+/* not */
+.ngrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}
+.no{display:flex;gap:14px;align-items:flex-start;padding:22px;border-radius:16px;border:1px dashed #C3D0DA;background:#fff;transition:border-color .3s,transform .3s var(--ease)}
+.no:hover{border-color:var(--navy);transform:translateY(-3px)}
+.no .x{flex:0 0 36px;height:36px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center}
+.no .x svg{width:16px;height:16px}
+.no p{color:var(--grey);font-size:.95rem;margin-top:6px}
+
+/* faq */
 .faq{margin-top:26px}
-.contact{background:var(--navy);color:#fff}
+details{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-family:Manrope,sans-serif;font-weight:800;padding:18px 40px 18px 0;min-height:48px;list-style:none;position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"";position:absolute;right:8px;top:50%;width:12px;height:12px;border-right:2.5px solid var(--teal);border-bottom:2.5px solid var(--teal);transform:translateY(-70%) rotate(45deg);transition:transform .3s var(--ease)}
+details[open] summary::after{transform:translateY(-30%) rotate(-135deg)}
+details p{color:var(--grey);padding:0 0 18px;max-width:75ch}
+
+/* contact */
+.contact{background:var(--navy);color:#fff;overflow:hidden}
+.contact::before{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(45,212,191,.18),transparent 70%);animation:float 9s ease-in-out infinite}
+@keyframes float{50%{transform:translate(-30px,30px)}}
 .contact .kicker{color:var(--teal-l)}
-.cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:36px;margin-top:34px}
-.big{font-family:Manrope,sans-serif;font-weight:800;font-size:1.7rem;color:#fff;text-decoration:none;display:block}
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:34px;position:relative}
+.big{font-family:Manrope,sans-serif;font-weight:800;font-size:1.8rem;color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:12px}
+.big svg{width:28px;height:28px;animation:ring 3s ease-in-out infinite}
+@keyframes ring{0%,80%,100%{transform:rotate(0)}84%{transform:rotate(-14deg)}88%{transform:rotate(12deg)}92%{transform:rotate(-8deg)}96%{transform:rotate(5deg)}}
 .contact p{color:#D5DFE7}
 .contact a.mail{color:var(--teal-l);font-weight:600;font-size:1.1rem;word-break:break-all}
 form{display:grid;gap:12px}
 label{font-weight:600;font-size:.93rem}
-input,textarea{width:100%;margin-top:6px;padding:13px 14px;border-radius:10px;border:1px solid #5B7389;background:#fff;color:var(--navy);font:inherit}
+input,textarea{width:100%;margin-top:6px;padding:13px 14px;border-radius:10px;border:1px solid #5B7389;background:#fff;color:var(--navy);font:inherit;transition:box-shadow .2s,border-color .2s}
+input:focus,textarea:focus{border-color:var(--teal-l);box-shadow:0 0 0 4px rgba(45,212,191,.25);outline:none}
 textarea{min-height:110px;resize:vertical}
 :focus-visible{outline:3px solid var(--teal-l);outline-offset:2px}
 .msg{font-size:.93rem;color:#C9D6E0}
 footer{background:#0A2036;color:#B4C4D1;padding:34px 0;font-size:.9rem}
 .frow{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
 footer svg{height:44px;width:auto}
-footer a{color:#B4C4D1}
-@media (max-width:640px){section{padding:54px 0}.hero{padding:60px 0}nav{gap:14px}.logo svg{height:44px}.btn{width:100%}nav .btn{width:auto}}
+
+@media (max-width:980px){
+.hgrid{grid-template-columns:1fr}.hvis{justify-self:center;max-width:420px}
+.facts{grid-template-columns:repeat(2,1fr)}
+.pgrid,.paths,.ngrid{grid-template-columns:1fr 1fr}
+.sgrid{grid-template-columns:1fr 1fr}
+.steps{grid-template-columns:repeat(3,1fr);row-gap:30px}.track{display:none}
+.cgrid{grid-template-columns:1fr}
+}
+@media (max-width:760px){nav a.l{display:none}}
+@media (max-width:640px){
+section{padding:58px 0}.hero{padding:54px 0}
+.pgrid,.paths,.ngrid,.sgrid,.facts{grid-template-columns:1fr}
+.steps{grid-template-columns:1fr 1fr}
+.logo svg{height:42px}.btn{width:100%}nav .btn{width:auto;padding:10px 14px;font-size:.92rem}
+}
+@media (prefers-reduced-motion:reduce){
+*,*::before,*::after{animation:none!important;transition:none!important}
+.js .rv{opacity:1;transform:none}.draw{stroke-dashoffset:0}.node{opacity:1}
+.track span{width:100%}.snow{display:none}
+}
 </style>
 </head>
 <body>
-<header>
+<header id="hdr">
 <div class="wrap bar">
 <a class="logo" href="#top" aria-label="Domkontrol – strona główna"><svg role="img" aria-label="Domkontrol – automatyka budynkowa" xmlns="http://www.w3.org/2000/svg" width="420" height="124" viewBox="0 0 420 124"><g transform="translate(24 24) scale(1.1875)"><rect width="64" height="64" rx="15" fill="#0F2A43"/><path d="M17 48 H45 V29 L32 18 L19 29 V39 H29" stroke="#FFFFFF" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="34" cy="39" r="4.2" fill="#2DD4BF"/></g><path d="M120.52 60.50V34.58H128.91Q129.21 34.58 130.17 34.60Q131.12 34.61 132.00 34.72Q135.14 35.10 137.31 36.90Q139.49 38.70 140.63 41.47Q141.76 44.24 141.76 47.54Q141.76 50.83 140.63 53.60Q139.49 56.38 137.31 58.18Q135.14 59.98 132.00 60.35Q131.12 60.46 130.17 60.48Q129.21 60.50 128.91 60.50ZM125.49 55.89H128.91Q129.39 55.89 130.22 55.86Q131.05 55.84 131.72 55.71Q133.41 55.37 134.48 54.13Q135.55 52.88 136.06 51.14Q136.58 49.39 136.58 47.54Q136.58 45.59 136.05 43.85Q135.51 42.10 134.43 40.90Q133.35 39.69 131.72 39.37Q131.05 39.22 130.22 39.20Q129.39 39.19 128.91 39.19H125.49Z M160.70 61.04Q156.81 61.04 153.99 59.35Q151.17 57.65 149.65 54.61Q148.13 51.57 148.13 47.54Q148.13 43.51 149.65 40.46Q151.17 37.42 153.99 35.73Q156.81 34.04 160.70 34.04Q164.58 34.04 167.40 35.73Q170.22 37.42 171.74 40.46Q173.26 43.51 173.26 47.54Q173.26 51.57 171.74 54.61Q170.22 57.65 167.40 59.35Q164.58 61.04 160.70 61.04ZM160.70 56.43Q163.16 56.47 164.80 55.37Q166.44 54.27 167.26 52.25Q168.08 50.24 168.08 47.54Q168.08 44.84 167.26 42.86Q166.44 40.88 164.80 39.78Q163.16 38.68 160.70 38.65Q158.23 38.61 156.59 39.71Q154.95 40.81 154.13 42.82Q153.32 44.84 153.32 47.54Q153.32 50.24 154.13 52.22Q154.95 54.20 156.59 55.30Q158.23 56.39 160.70 56.43Z M180.35 60.50V34.58H184.74L193.31 51.79L201.88 34.58H206.27V60.50H201.70V45.02L194.18 60.50H192.45L184.92 45.02V60.50Z" fill="#0F2A43"/><path d="M214.80 60.50V34.58H218.01V46.75L229.35 34.58H233.38L221.61 47.16L234.30 60.50H230.16L218.01 47.83V60.50Z M250.97 61.04Q247.10 61.04 244.40 59.33Q241.70 57.62 240.28 54.58Q238.87 51.53 238.87 47.54Q238.87 43.54 240.28 40.50Q241.70 37.46 244.40 35.75Q247.10 34.04 250.97 34.04Q254.85 34.04 257.55 35.75Q260.25 37.46 261.66 40.50Q263.06 43.54 263.06 47.54Q263.06 51.53 261.66 54.58Q260.25 57.62 257.55 59.33Q254.85 61.04 250.97 61.04ZM250.97 57.98Q253.86 58.00 255.80 56.67Q257.73 55.35 258.70 52.99Q259.66 50.63 259.66 47.54Q259.66 44.42 258.70 42.08Q257.73 39.74 255.80 38.43Q253.86 37.12 250.97 37.10Q248.07 37.08 246.15 38.39Q244.23 39.71 243.26 42.07Q242.29 44.42 242.27 47.54Q242.25 50.63 243.23 52.97Q244.20 55.31 246.13 56.64Q248.07 57.96 250.97 57.98Z M270.15 60.50V34.58H273.39L286.91 54.83V34.58H290.15V60.50H286.91L273.39 40.23V60.50Z M305.36 60.50V37.62H296.52V34.58H317.40V37.62H308.57V60.50Z M323.78 60.50V34.58H334.02Q334.40 34.58 334.92 34.61Q335.44 34.63 335.93 34.72Q338.03 35.05 339.46 36.16Q340.89 37.28 341.61 38.98Q342.33 40.68 342.33 42.75Q342.33 45.76 340.77 47.95Q339.67 49.50 337.87 50.24L342.87 60.50H339.20L334.56 50.92H326.98V60.50ZM326.98 47.88H333.91Q334.25 47.88 334.69 47.84Q335.13 47.81 335.53 47.72Q336.77 47.43 337.55 46.67Q338.34 45.90 338.70 44.87Q339.06 43.83 339.06 42.75Q339.06 41.67 338.70 40.64Q338.34 39.60 337.55 38.83Q336.77 38.05 335.53 37.78Q335.13 37.67 334.69 37.65Q334.25 37.62 333.91 37.62H326.98Z M360.98 61.04Q357.11 61.04 354.41 59.33Q351.71 57.62 350.30 54.58Q348.89 51.53 348.89 47.54Q348.89 43.54 350.30 40.50Q351.71 37.46 354.41 35.75Q357.11 34.04 360.98 34.04Q364.87 34.04 367.57 35.75Q370.27 37.46 371.67 40.50Q373.08 43.54 373.08 47.54Q373.08 51.53 371.67 54.58Q370.27 57.62 367.57 59.33Q364.87 61.04 360.98 61.04ZM360.98 57.98Q363.88 58.00 365.81 56.67Q367.75 55.35 368.71 52.99Q369.68 50.63 369.68 47.54Q369.68 44.42 368.71 42.08Q367.75 39.74 365.81 38.43Q363.88 37.12 360.98 37.10Q358.08 37.08 356.17 38.39Q354.25 39.71 353.28 42.07Q352.31 44.42 352.29 47.54Q352.27 50.63 353.24 52.97Q354.21 55.31 356.15 56.64Q358.08 57.96 360.98 57.98Z M380.53 60.50V34.58H383.73V57.46H395.76V60.50Z" fill="#0F2A43"/><rect x="118.00" y="69.50" width="278.30" height="1.98" fill="#0B8A7C"/><path d="M118.25 89.42 121.15 80.48H123.02L125.93 89.42H124.58L123.92 87.40H120.25L119.60 89.42ZM123.52 86.19 122.07 81.78 120.65 86.19Z M136.61 89.61Q135.56 89.61 134.76 89.18Q133.95 88.74 133.50 87.96Q133.05 87.19 133.05 86.13V80.49L134.36 80.48V86.06Q134.36 86.63 134.56 87.07Q134.75 87.50 135.07 87.79Q135.39 88.09 135.79 88.24Q136.20 88.38 136.61 88.38Q137.03 88.38 137.43 88.23Q137.83 88.08 138.16 87.79Q138.48 87.50 138.67 87.06Q138.86 86.63 138.86 86.06V80.48H140.18V86.13Q140.18 87.18 139.72 87.96Q139.27 88.74 138.47 89.18Q137.66 89.61 136.61 89.61Z M150.14 89.42V81.70H147.17V80.48H154.42V81.70H151.44V89.42Z M165.14 89.61Q163.80 89.61 162.86 89.02Q161.91 88.43 161.41 87.38Q160.91 86.33 160.91 84.95Q160.91 83.57 161.41 82.52Q161.91 81.47 162.86 80.88Q163.80 80.29 165.14 80.29Q166.48 80.29 167.42 80.88Q168.37 81.47 168.87 82.52Q169.36 83.57 169.36 84.95Q169.36 86.33 168.87 87.38Q168.37 88.43 167.42 89.02Q166.48 89.61 165.14 89.61ZM165.14 88.37Q166.09 88.38 166.72 87.95Q167.35 87.52 167.67 86.75Q167.98 85.97 167.98 84.95Q167.98 83.93 167.67 83.16Q167.35 82.39 166.72 81.96Q166.09 81.53 165.14 81.53Q164.19 81.52 163.56 81.94Q162.93 82.37 162.61 83.15Q162.30 83.93 162.29 84.95Q162.28 85.97 162.60 86.74Q162.92 87.51 163.55 87.94Q164.19 88.37 165.14 88.37Z M176.60 89.42V80.48H177.78L181.02 87.20L184.24 80.48H185.43V89.41H184.20V83.30L181.31 89.42H180.72L177.83 83.30V89.42Z M192.55 89.42 195.45 80.48H197.32L200.23 89.42H198.88L198.22 87.40H194.55L193.89 89.42ZM197.82 86.19 196.37 81.78 194.94 86.19Z M209.57 89.42V81.70H206.60V80.48H213.85V81.70H210.87V89.42Z M222.99 89.42V85.73L219.97 80.48H221.48L223.65 84.24L225.82 80.48H227.33L224.31 85.73V89.42Z M234.20 89.42V80.48H235.50V84.65L239.25 80.48H240.86L236.90 84.84L241.15 89.42H239.49L235.50 85.15V89.42Z M247.40 89.42 250.31 80.48H252.17L255.08 89.42H253.73L253.07 87.40H249.40L248.75 89.42ZM252.67 86.19 251.22 81.78 249.80 86.19Z  M270.68 89.42V80.48H274.20Q275.05 80.48 275.62 80.83Q276.20 81.17 276.49 81.72Q276.79 82.27 276.79 82.88Q276.79 83.62 276.43 84.15Q276.18 84.50 275.84 84.70Q276.41 84.93 276.75 85.38Q277.21 86.00 277.21 86.81Q277.21 87.60 276.89 88.19Q276.58 88.77 275.98 89.10Q275.38 89.42 274.53 89.42ZM272.00 88.19H274.33Q274.77 88.19 275.12 88.02Q275.47 87.85 275.68 87.54Q275.88 87.22 275.88 86.79Q275.88 86.38 275.70 86.06Q275.52 85.73 275.19 85.54Q274.86 85.35 274.41 85.35H272.00ZM272.00 84.13H274.18Q274.54 84.13 274.83 83.98Q275.11 83.84 275.29 83.56Q275.46 83.29 275.46 82.89Q275.46 82.37 275.11 82.04Q274.76 81.70 274.18 81.70H272.00Z M288.01 89.61Q286.96 89.61 286.15 89.18Q285.35 88.74 284.90 87.96Q284.44 87.19 284.44 86.13V80.49L285.76 80.48V86.06Q285.76 86.63 285.95 87.07Q286.14 87.50 286.47 87.79Q286.79 88.09 287.19 88.24Q287.59 88.38 288.01 88.38Q288.43 88.38 288.83 88.23Q289.23 88.08 289.55 87.79Q289.88 87.50 290.07 87.06Q290.25 86.63 290.25 86.06V80.48H291.57V86.13Q291.57 87.18 291.12 87.96Q290.66 88.74 289.86 89.18Q289.06 89.61 288.01 89.61Z M299.31 89.42V80.48H302.11Q302.23 80.48 302.57 80.49Q302.91 80.49 303.22 80.53Q304.27 80.67 304.99 81.29Q305.71 81.91 306.07 82.86Q306.44 83.81 306.44 84.95Q306.44 86.09 306.07 87.05Q305.71 88.00 304.99 88.62Q304.27 89.23 303.22 89.37Q302.91 89.41 302.57 89.41Q302.23 89.42 302.11 89.42ZM300.64 88.19H302.11Q302.32 88.19 302.61 88.17Q302.90 88.16 303.13 88.12Q303.81 87.99 304.24 87.53Q304.66 87.07 304.86 86.39Q305.06 85.71 305.06 84.95Q305.06 84.16 304.85 83.49Q304.65 82.81 304.22 82.36Q303.80 81.90 303.13 81.78Q302.90 81.73 302.61 81.72Q302.31 81.71 302.11 81.71H300.64Z M316.04 89.42V85.73L313.01 80.48H314.53L316.70 84.24L318.86 80.48H320.38L317.36 85.73V89.42Z M327.25 89.42V80.48H328.56L332.97 87.12V80.48H334.28V89.42H332.97L328.56 82.77V89.42Z M342.02 89.42V80.48H343.32V84.65L347.06 80.48H348.68L344.72 84.84L348.97 89.42H347.31L343.32 85.15V89.42Z M359.57 89.61Q358.23 89.61 357.29 89.02Q356.34 88.43 355.84 87.38Q355.34 86.33 355.34 84.95Q355.34 83.57 355.84 82.52Q356.34 81.47 357.29 80.88Q358.23 80.29 359.57 80.29Q360.91 80.29 361.85 80.88Q362.80 81.47 363.30 82.52Q363.79 83.57 363.79 84.95Q363.79 86.33 363.30 87.38Q362.80 88.43 361.85 89.02Q360.91 89.61 359.57 89.61ZM359.57 88.37Q360.52 88.38 361.15 87.95Q361.78 87.52 362.10 86.75Q362.42 85.97 362.42 84.95Q362.42 83.93 362.10 83.16Q361.78 82.39 361.15 81.96Q360.52 81.53 359.57 81.53Q358.62 81.52 357.99 81.94Q357.36 82.37 357.04 83.15Q356.73 83.93 356.72 84.95Q356.72 85.97 357.03 86.74Q357.35 87.51 357.99 87.94Q358.62 88.37 359.57 88.37Z M372.93 89.42 370.33 80.48H371.69L373.58 87.24L375.46 80.49L376.82 80.48L378.70 87.24L380.59 80.48H381.95L379.35 89.42H378.06L376.14 82.73L374.22 89.42Z M388.37 89.42 391.27 80.48H393.14L396.05 89.42H394.70L394.04 87.40H390.37L389.72 89.42ZM393.64 86.19 392.19 81.78 390.76 86.19Z" fill="#0F2A43"/></svg></a>
 <nav aria-label="Główna nawigacja">
-<a href="#uslugi">Usługi</a>
-<a href="#jak">Jak pracuję</a>
-<a href="#cennik">Cennik</a>
-<a href="#faq">Pytania</a>
+<a class="l" href="#sciezka">Dla kogo</a>
+<a class="l" href="#zestawy">Zestawy</a>
+<a class="l" href="#jak">Jak pracuję</a>
+<a class="l" href="#cennik">Cennik</a>
+<a class="l" href="#faq">Pytania</a>
 <a class="btn btn-p" href="#kontakt">Bezpłatna wycena</a>
 </nav>
 </div>
@@ -110,14 +262,64 @@ footer a{color:#B4C4D1}
 
 <main id="top">
 <div class="hero">
-<div class="wrap">
+<div class="wrap hgrid">
+<div>
 <p class="kicker">Inteligentny dom · Trójmiasto</p>
 <h1>Inteligentny dom, który po prostu działa</h1>
 <p class="lead">Montuję i konfiguruję automatykę w mieszkaniach i domach: oświetlenie, rolety, ogrzewanie i czujniki w jednej aplikacji. Bez kucia ścian, z protokołem odbioru i wsparciem po montażu.</p>
 <div class="cta">
 <a class="btn btn-p" href="#kontakt">Zamów bezpłatną wycenę</a>
-<a class="btn btn-s" href="tel:+48792373885">Zadzwoń: 792 373 885</a>
+<a class="btn btn-s" href="tel:+48792373885"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.900.7 2.800a2 2 0 0 1-.5 2.100L8 9.900a16 16 0 0 0 6 6l1.300-1.300a2 2 0 0 1 2.100-.4c.9.3 1.800.6 2.800.7a2 2 0 0 1 1.700 2z"/></svg>792 373 885</a>
 </div>
+</div>
+<div class="hvis" aria-hidden="true">
+<svg viewBox="0 0 460 400" fill="none">
+<circle cx="230" cy="210" r="168" stroke="rgba(45,212,191,.16)" stroke-width="1.5" stroke-dasharray="3 8"/>
+<circle cx="230" cy="210" r="118" stroke="rgba(255,255,255,.07)" stroke-width="1.5"/>
+<!-- connections -->
+<path class="flow" d="M240 238 L96 118" stroke="#2DD4BF" stroke-width="2"/>
+<path class="flow" d="M240 238 L370 112" stroke="#2DD4BF" stroke-width="2" style="animation-delay:.4s"/>
+<path class="flow" d="M240 238 L82 312" stroke="#2DD4BF" stroke-width="2" style="animation-delay:.8s"/>
+<path class="flow" d="M240 238 L384 314" stroke="#2DD4BF" stroke-width="2" style="animation-delay:1.2s"/>
+<!-- house as circuit line -->
+<path class="glow" d="M150 330 V196 L230 128 L310 196 V330 Z" fill="rgba(255,255,255,.04)"/>
+<path class="draw" d="M120 330 H310 V196 L230 128 L150 196 V268 H222" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<circle class="pulse" cx="240" cy="268" r="12" fill="#2DD4BF"/>
+<circle cx="240" cy="268" r="12" fill="#2DD4BF"/>
+<!-- nodes -->
+<g class="node" style="animation-delay:1.2s">
+<circle cx="96" cy="118" r="30" fill="#163652" stroke="rgba(255,255,255,.25)"/>
+<path class="bulb" d="M90 128h12M92 133h8M96 102a10 10 0 0 0-6.5 17.500c1.200 1.100 1.500 2.200 1.500 3.500h10c0-1.300.3-2.400 1.500-3.500A10 10 0 0 0 96 102z" stroke="#C9D6E0" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round"/>
+<text class="tag" x="96" y="166" text-anchor="middle">Światło</text>
+</g>
+<g class="node" style="animation-delay:1.45s">
+<circle cx="370" cy="112" r="30" fill="#163652" stroke="rgba(255,255,255,.25)"/>
+<rect x="356" y="98" width="28" height="28" rx="2" stroke="#C9D6E0" stroke-width="2"/>
+<g class="blind" style="transform-origin:370px 98px">
+<rect x="358" y="100" width="24" height="24" fill="rgba(45,212,191,.35)"/>
+<path d="M358 106h24M358 112h24M358 118h24" stroke="#2DD4BF" stroke-width="1.500"/>
+</g>
+<text class="tag" x="370" y="160" text-anchor="middle">Rolety</text>
+</g>
+<g class="node" style="animation-delay:1.7s">
+<circle cx="82" cy="312" r="30" fill="#163652" stroke="rgba(255,255,255,.25)"/>
+<rect x="78" y="294" width="8" height="24" rx="4" stroke="#C9D6E0" stroke-width="2"/>
+<circle cx="82" cy="322" r="6" stroke="#C9D6E0" stroke-width="2"/>
+<rect class="temp" x="80.500" y="300" width="3" height="20" rx="1.500" fill="#F07B5F"/>
+<circle cx="82" cy="322" r="3.500" fill="#F07B5F"/>
+<text class="tag" x="82" y="360" text-anchor="middle">Ogrzewanie</text>
+</g>
+<g class="node" style="animation-delay:1.95s">
+<circle cx="384" cy="314" r="30" fill="#163652" stroke="rgba(255,255,255,.25)"/>
+<path d="M384 298c6 8 9 12.500 9 17a9 9 0 0 1-18 0c0-4.500 3-9 9-17z" stroke="#2DD4BF" stroke-width="2.200" stroke-linejoin="round"/>
+<circle class="pulse" cx="402" cy="296" r="4" fill="#F07B5F" style="animation-duration:1.800s"/>
+<circle cx="402" cy="296" r="4" fill="#F07B5F"/>
+<text class="tag" x="384" y="362" text-anchor="middle">Czujniki</text>
+</g>
+</svg>
+</div>
+</div>
+<div class="wrap">
 <div class="facts">
 <div class="fact"><b>Inżynier elektryk</b><span>13 lat w automatyce i uruchamianiu instalacji</span></div>
 <div class="fact"><b>Uprawnienia SEP E i D</b><span>do 1 kV, również pomiary</span></div>
@@ -127,82 +329,110 @@ footer a{color:#B4C4D1}
 </div>
 </div>
 
-<section id="uslugi">
+<section class="pains">
 <div class="wrap">
-<p class="kicker">Usługi</p>
-<h2>Co mogę u Ciebie zautomatyzować</h2>
-<p class="lead">Smart home nie musi oznaczać dużej inwestycji. Zaczynamy od tego, co naprawdę ułatwi Ci dzień, a system można rozbudowywać krok po kroku.</p>
+<p class="kicker rv">Brzmi znajomo?</p>
+<h2 class="rv">Zwykłe mieszkanie kosztuje więcej, niż myślisz</h2>
+<div class="pgrid">
+<div class="pain rv d1"><div class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="#C2493A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14.500V5a2 2 0 0 0-4 0v9.500a4 4 0 1 0 4 0z"/><path d="M16 6h5M16 10h4"/></svg></div><h3>Grzejesz puste pokoje</h3><p>Grzejniki pracują tak samo, gdy jesteś w domu, jak wtedy, gdy wszyscy wyszli na cały dzień.</p></div>
+<div class="pain rv d2"><div class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="#C2493A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.100 9a3 3 0 0 1 5.800 1c0 2-3 3-3 3M12 17h.01"/></svg></div><h3>„Czy na pewno wyłączyłem?”</h3><p>Wątpliwość po wyjściu z domu, której nie da się sprawdzić jednym spojrzeniem na telefon.</p></div>
+<div class="pain rv d3"><div class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="#C2493A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c4 5.500 6 8.600 6 11.500a6 6 0 0 1-12 0C6 11.600 8 8.500 12 3z"/></svg></div><h3>Mały przeciek, duży remont</h3><p>Cieknąca pralka zauważona po tygodniu to nowa podłoga i rozmowa z sąsiadem z dołu.</p></div>
+<div class="pain rv d1"><div class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="#C2493A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.500"/><rect x="14" y="3" width="7" height="7" rx="1.500"/><rect x="3" y="14" width="7" height="7" rx="1.500"/><rect x="14" y="14" width="7" height="7" rx="1.500"/></svg></div><h3>Pięć aplikacji, zero porządku</h3><p>Każde urządzenie ma własną aplikację i żadne nie wie nic o pozostałych.</p></div>
+<div class="pain rv d2"><div class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="#C2493A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div><h3>Rachunek bez wyjaśnienia</h3><p>Widzisz kwotę za prąd, ale nie wiesz, które urządzenie ją generuje.</p></div>
+<div class="pain rv d3"><div class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="#C2493A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.700L3 8"/><path d="M3 3v5h5M12 7v5l3 2"/></svg></div><h3>Codziennie to samo, ręcznie</h3><p>Rolety rano, rolety wieczorem, światło w każdym pokoju osobno. Dzień w dzień.</p></div>
+</div>
+<p class="turn rv">Każdy z tych problemów da się rozwiązać bez remontu. <a href="#sciezka">Zobacz jak <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.500" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a></p>
+</div>
+</section>
+
+<section id="sciezka">
+<div class="wrap">
+<p class="kicker rv">Wybierz swoją ścieżkę</p>
+<h2 class="rv">Od czego zaczniemy u Ciebie?</h2>
+<p class="lead rv">Każdy dom jest inny, ale zaczynamy zawsze od tego samego: od tego, co ma Ci ułatwić dzień.</p>
+<div class="paths">
+<div class="path rv d1">
+<div class="pv"><svg viewBox="0 0 120 100" fill="none" aria-hidden="true"><rect x="30" y="10" width="60" height="86" rx="3" stroke="#fff" stroke-width="3"/><rect class="win" x="40" y="20" width="14" height="12" rx="1.500"/><rect class="win b" x="66" y="20" width="14" height="12" rx="1.500"/><rect class="win c" x="40" y="42" width="14" height="12" rx="1.500"/><rect class="win" x="66" y="42" width="14" height="12" rx="1.500" style="animation-delay:1.500s"/><rect class="win b" x="40" y="64" width="14" height="12" rx="1.500" style="animation-delay:2.500s"/><rect class="win c" x="66" y="64" width="14" height="12" rx="1.500" style="animation-delay:.500s"/><path d="M54 96V84h12v12" stroke="#2DD4BF" stroke-width="3"/></svg></div>
+<h3>Mam mieszkanie</h3>
+<ul><li>moduły w istniejących puszkach, bez kucia</li><li>światło, rolety i ogrzewanie w jednej aplikacji</li><li>start od jednego pokoju, rozbudowa później</li></ul>
+<a class="go" href="#cennik">Pakiety dla mieszkań <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.500" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+</div>
+<div class="path rv d2">
+<div class="pv"><svg viewBox="0 0 120 100" fill="none" aria-hidden="true"><path d="M18 46 60 12l42 34" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M26 40v54h68V40" stroke="#fff" stroke-width="3" stroke-linejoin="round"/><rect class="win" x="36" y="52" width="16" height="14" rx="1.500"/><rect class="win b" x="68" y="52" width="16" height="14" rx="1.500"/><rect class="win c" x="36" y="74" width="16" height="12" rx="1.500"/><path d="M68 94V74h16v20" stroke="#2DD4BF" stroke-width="3"/></svg></div>
+<h3>Mam gotowy dom</h3>
+<ul><li>wiele stref ogrzewania i grupy rolet</li><li>czujniki zalania, dymu i otwarcia okien</li><li>wdrożenie etapami, piętro po piętrze</li></ul>
+<a class="go" href="#zestawy">Zestawy sezonowe <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.500" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+</div>
+<div class="path rv d3">
+<div class="pv"><svg viewBox="0 0 120 100" fill="none" aria-hidden="true"><rect x="22" y="22" width="76" height="62" rx="4" stroke="#fff" stroke-width="3"/><path d="M22 36h76" stroke="#fff" stroke-width="3"/><circle cx="31" cy="29" r="2" fill="#fff"/><circle cx="39" cy="29" r="2" fill="#fff"/><path d="M34 60h14M41 53v14" stroke="#2DD4BF" stroke-width="3" stroke-linecap="round"/><rect class="win" x="58" y="48" width="28" height="8" rx="2"/><rect class="win b" x="58" y="62" width="20" height="8" rx="2"/></svg></div>
+<h3>Wynajmuję krótkoterminowo</h3>
+<ul><li>zdalna kontrola ogrzewania między gośćmi</li><li>czujniki zalania i dymu z powiadomieniem</li><li>harmonogramy i podgląd zużycia energii</li></ul>
+<a class="go" href="#kontakt">Zapytaj o rozwiązanie <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.500" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+</div>
+</div>
+</div>
+</section>
+
+<section id="uslugi" class="alt">
+<div class="wrap">
+<p class="kicker rv">Usługi</p>
+<h2 class="rv">Co mogę u Ciebie zautomatyzować</h2>
+<p class="lead rv">Smart home nie musi oznaczać dużej inwestycji. Zaczynamy od tego, co naprawdę ułatwi Ci dzień, a system można rozbudowywać krok po kroku.</p>
 <div class="grid">
-<div class="card">
-<svg viewBox="0 0 24 24" fill="none" stroke="#0B8A7C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.800 1-2.500A6 6 0 0 0 12 3z"/></svg>
-<h3>Oświetlenie</h3>
-<p>Sterowanie z telefonu, głosem i z dotychczasowych włączników. Sceny, harmonogramy, ściemnianie, światło reagujące na ruch.</p>
-</div>
-<div class="card">
-<svg viewBox="0 0 24 24" fill="none" stroke="#0B8A7C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M4 8h16M4 12h16M4 16h16"/></svg>
-<h3>Rolety i żaluzje</h3>
-<p>Automatyczne otwieranie rano i zamykanie o zmierzchu, sterowanie grupowe, ochrona przed nagrzewaniem latem.</p>
-</div>
-<div class="card">
-<svg viewBox="0 0 24 24" fill="none" stroke="#0B8A7C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 14.500V5a2 2 0 0 0-4 0v9.500a4 4 0 1 0 4 0z"/><path d="M16 7h4M16 11h3"/></svg>
-<h3>Ogrzewanie</h3>
-<p>Głowice i termostaty z harmonogramem dla każdego pomieszczenia. Niższa temperatura, gdy nikogo nie ma, i ciepły dom przed powrotem.</p>
-</div>
-<div class="card">
-<svg viewBox="0 0 24 24" fill="none" stroke="#0B8A7C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.500-3.200 7.800-8 9-4.800-1.200-8-4.500-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
-<h3>Bezpieczeństwo</h3>
-<p>Czujniki zalania, dymu, otwarcia okien i drzwi. Powiadomienie na telefon, zanim mała awaria zmieni się w dużą szkodę.</p>
-</div>
-<div class="card">
-<svg viewBox="0 0 24 24" fill="none" stroke="#0B8A7C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.500" width="12" height="19" rx="2.500"/><path d="M10.500 18h3"/></svg>
-<h3>Jedna aplikacja</h3>
-<p>Łączę urządzenia różnych producentów w jednym miejscu: Google Home, Home Assistant, Shelly, Zigbee. Koniec z pięcioma aplikacjami.</p>
-</div>
-<div class="card">
-<svg viewBox="0 0 24 24" fill="none" stroke="#0B8A7C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.500 6.500a4 4 0 0 0 5 5L11 20a2.100 2.100 0 0 1-3-3z"/><path d="M14.500 6.500l3-3"/></svg>
-<h3>Naprawa i porządki</h3>
-<p>Masz już urządzenia smart, które działają niestabilnie albo wcale? Diagnozuję, porządkuję konfigurację i uruchamiam całość od nowa.</p>
-</div>
+<div class="card rv d1"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0B8A7C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.500c.7.7 1 1.500 1 2.500h6c0-1 .3-1.800 1-2.500A6 6 0 0 0 12 3z"/></svg></div><h3>Oświetlenie</h3><p>Sterowanie z telefonu, głosem i z dotychczasowych włączników. Sceny, harmonogramy, ściemnianie, światło reagujące na ruch.</p></div>
+<div class="card rv d2"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0B8A7C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1.500"/><path d="M4 8h16M4 12h16M4 16h16"/></svg></div><h3>Rolety i żaluzje</h3><p>Automatyczne otwieranie rano i zamykanie o zmierzchu, sterowanie grupowe, ochrona przed nagrzewaniem latem.</p></div>
+<div class="card rv d3"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0B8A7C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14.500V5a2 2 0 0 0-4 0v9.500a4 4 0 1 0 4 0z"/><path d="M16 7h4M16 11h3"/></svg></div><h3>Ogrzewanie</h3><p>Głowice i termostaty z harmonogramem dla każdego pomieszczenia. Niższa temperatura, gdy nikogo nie ma, i ciepły dom przed powrotem.</p></div>
+<div class="card rv d1"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0B8A7C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.500-3.200 7.800-8 9-4.800-1.200-8-4.500-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Bezpieczeństwo</h3><p>Czujniki zalania, dymu, otwarcia okien i drzwi. Powiadomienie na telefon, zanim mała awaria zmieni się w dużą szkodę.</p></div>
+<div class="card rv d2"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0B8A7C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.500" width="12" height="19" rx="2.500"/><path d="M10.500 18h3"/></svg></div><h3>Jedna aplikacja</h3><p>Łączę urządzenia różnych producentów w jednym miejscu: Google Home, Home Assistant, Shelly, Zigbee. Koniec z pięcioma aplikacjami.</p></div>
+<div class="card rv d3"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0B8A7C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.500 6.500a4 4 0 0 0 5 5L11 20a2.100 2.100 0 0 1-3-3z"/><path d="M14.500 6.500l3-3"/></svg></div><h3>Naprawa i porządki</h3><p>Masz już urządzenia smart, które działają niestabilnie albo wcale? Diagnozuję, porządkuję konfigurację i uruchamiam całość od nowa.</p></div>
 </div>
 </div>
 </section>
 
-<section id="jak" class="alt">
+<section id="zestawy" class="season" data-season="zima-2026-27">
+<div class="snow" aria-hidden="true" id="snow"></div>
+<div class="wrap" style="position:relative">
+<p class="kicker rv">Zestawy sezonowe</p>
+<h2 class="rv">Zima: ciepło, bezpiecznie i taniej</h2>
+<p class="lead rv">Sezon grzewczy i świąteczne wyjazdy to moment, w którym automatyka zwraca się najszybciej. Wybierz gotowy zestaw albo potraktuj go jako punkt wyjścia do rozmowy.</p>
+<span class="badge rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 2v20M4.900 6l14.200 12M19.100 6 4.900 18"/><path d="m9 3 3 2 3-2M9 21l3-2 3 2"/></svg>Oferta na sezon zimowy 2026/27</span>
+<div class="sgrid">
+<div class="set rv d1"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="#2DD4BF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14.500V5a2 2 0 0 0-4 0v9.500a4 4 0 1 0 4 0z"/><path d="M16 7h4M16 11h3"/></svg></div><h3>Ciepło pod kontrolą</h3><div class="price">od 690 zł</div><ul><li>do 4 głowic termostatycznych</li><li>harmonogram dla każdego pokoju</li><li>niższa temperatura, gdy nikogo nie ma</li><li>centrala i jedna aplikacja</li></ul></div>
+<div class="set rv d2"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="#2DD4BF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c4 5.500 6 8.600 6 11.500a6 6 0 0 1-12 0C6 11.600 8 8.500 12 3z"/><path d="M9 15l2 2 4-4"/></svg></div><h3>Stop zalaniu</h3><div class="price">od 450 zł</div><ul><li>do 3 czujników: łazienka, kuchnia, pralka</li><li>automatyczne zamknięcie głównego zaworu wody*</li><li>natychmiastowe powiadomienie na telefon</li></ul></div>
+<div class="set rv d3"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="#2DD4BF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/></svg></div><h3>Pusty dom na święta</h3><div class="price">od 590 zł</div><ul><li>temperatura ochronna podczas wyjazdu</li><li>ogrzanie domu przed Twoim powrotem</li><li>symulacja obecności światłem</li><li>czujniki otwarcia i dymu z powiadomieniem</li></ul></div>
+<div class="set rv d4"><div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="#2DD4BF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div><h3>Wiem, co zużywa prąd</h3><div class="price">od 290 zł</div><ul><li>miernik energii w rozdzielnicy</li><li>zużycie na bieżąco w aplikacji</li><li>alert, gdy urządzenie pracuje za długo</li><li>montaż w rozdzielnicy z uprawnieniami SEP</li></ul></div>
+</div>
+<p class="snote rv">Ceny brutto za robociznę i konfigurację; urządzenia wyceniam osobno, po cenach zakupu. *Automatyczne zamknięcie zaworu jest możliwe, gdy istniejący zawór kulowy nadaje się do montażu napędu; sprawdzam to podczas wyceny.</p>
+</div>
+</section>
+
+<section id="jak">
 <div class="wrap">
-<p class="kicker">Jak pracuję</p>
-<h2>Cztery kroki od rozmowy do działającego systemu</h2>
-<div class="steps">
-<div class="step"><h3>Rozmowa i zdjęcia</h3><p>Opowiadasz, co ma działać. Proszę o kilka zdjęć puszek i rozdzielnicy, żeby od razu podać realne widełki cenowe.</p></div>
-<div class="step"><h3>Wycena na piśmie</h3><p>Dostajesz listę urządzeń i prac z cenami. Bez ukrytych kosztów: znasz kwotę przed rozpoczęciem.</p></div>
-<div class="step"><h3>Montaż i konfiguracja</h3><p>Urządzenia przygotowuję wcześniej, więc montaż u Ciebie trwa krótko. Pracuję wieczorami i w soboty.</p></div>
-<div class="step"><h3>Odbiór i wsparcie</h3><p>Sprawdzamy razem każdą funkcję. Otrzymujesz protokół odbioru, krótką instrukcję i 12 miesięcy wsparcia zdalnego.</p></div>
+<p class="kicker rv">Jak pracuję</p>
+<h2 class="rv">Sześć kroków od rozmowy do działającego systemu</h2>
+<div class="steps rv" id="steps">
+<div class="track"><span></span></div>
+<div class="step"><div class="num">1</div><h3>Rozmowa i zdjęcia</h3><p>Krótka rozmowa i kilka zdjęć puszek oraz rozdzielnicy. Od razu mówię, czy i jak to zrobić.</p></div>
+<div class="step"><div class="num">2</div><h3>Wizyta i pomiary</h3><p>Sprawdzam instalację na miejscu: przewód neutralny, głębokość puszek, zasięg sieci.</p></div>
+<div class="step"><div class="num">3</div><h3>Wycena na piśmie</h3><p>Lista urządzeń i prac z cenami. Znasz kwotę przed rozpoczęciem.</p></div>
+<div class="step"><div class="num">4</div><h3>Przygotowanie w warsztacie</h3><p>Moduły konfiguruję i testuję wcześniej, na stanowisku. U Ciebie montaż trwa krócej.</p></div>
+<div class="step"><div class="num">5</div><h3>Montaż i uruchomienie</h3><p>Montaż, sceny i harmonogramy. Pracuję wieczorami i w soboty.</p></div>
+<div class="step"><div class="num">6</div><h3>Odbiór i opieka</h3><p>Protokół odbioru, instrukcja, dostępy na Twoim koncie i 12 miesięcy wsparcia zdalnego.</p></div>
 </div>
 </div>
 </section>
 
-<section id="cennik">
+<section id="cennik" class="alt">
 <div class="wrap">
-<p class="kicker">Cennik</p>
-<h2>Jasne ceny, wycena przed rozpoczęciem</h2>
-<p class="lead">Ceny brutto za robociznę i konfigurację. Urządzenia wyceniam osobno, po cenach zakupu, albo montuję te, które już masz.</p>
+<p class="kicker rv">Cennik</p>
+<h2 class="rv">Jasne ceny, wycena przed rozpoczęciem</h2>
+<p class="lead rv">Ceny brutto za robociznę i konfigurację. Urządzenia wyceniam osobno, po cenach zakupu, albo montuję te, które już masz.</p>
 <div class="packs">
-<div class="pack">
-<h3>Start: oświetlenie</h3>
-<div class="price">od 890 zł</div>
-<ul><li>do 5 punktów świetlnych</li><li>sterowanie z telefonu i głosem</li><li>2 sceny, np. „Wychodzę” i „Dobranoc”</li><li>włączniki działają jak dotąd</li></ul>
+<div class="pack rv d1"><h3>Start: oświetlenie</h3><div class="price">od 890 zł</div><ul><li>do 5 punktów świetlnych</li><li>sterowanie z telefonu i głosem</li><li>2 sceny, np. „Wychodzę” i „Dobranoc”</li><li>włączniki działają jak dotąd</li></ul></div>
+<div class="pack top rv d2"><h3>Komfort: mieszkanie</h3><div class="price">od 2 200 zł</div><ul><li>do 10 punktów: światło i rolety</li><li>ogrzewanie w maks. 4 pomieszczeniach</li><li>centrala i jedna aplikacja</li><li>5 scen i harmonogramy</li></ul></div>
+<div class="pack rv d3"><h3>Bezpieczny dom</h3><div class="price">od 490 zł</div><ul><li>do 6 czujników: zalanie, dym, okna</li><li>powiadomienia na telefon</li><li>test każdego czujnika przy odbiorze</li><li>możliwa rozbudowa o zawór wody</li></ul></div>
 </div>
-<div class="pack top">
-<h3>Komfort: mieszkanie</h3>
-<div class="price">od 2 200 zł</div>
-<ul><li>do 10 punktów: światło i rolety</li><li>ogrzewanie w maks. 4 pomieszczeniach</li><li>centrala i jedna aplikacja</li><li>5 scen i harmonogramy</li></ul>
-</div>
-<div class="pack">
-<h3>Bezpieczny dom</h3>
-<div class="price">od 490 zł</div>
-<ul><li>do 6 czujników: zalanie, dym, okna</li><li>powiadomienia na telefon</li><li>test każdego czujnika przy odbiorze</li><li>możliwa rozbudowa o zawór wody</li></ul>
-</div>
-</div>
-<div class="tablebox">
+<div class="tablebox rv">
 <table>
 <thead><tr><th scope="col">Usługa</th><th scope="col" class="p">Cena brutto</th></tr></thead>
 <tbody>
@@ -223,23 +453,39 @@ footer a{color:#B4C4D1}
 </div>
 </section>
 
+<section>
+<div class="wrap">
+<p class="kicker rv">Dlaczego Domkontrol</p>
+<h2 class="rv">Podejście inżynierskie, nie „gadżety”</h2>
+<div class="grid">
+<div class="card rv d1"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0B8A7C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div><h3>Elektryka zrobiona poprawnie</h3><p>Pracuję z uprawnieniami SEP w zakresie eksploatacji i dozoru do 1 kV. Dobieram moduły do obciążenia i rodzaju instalacji, a nie odwrotnie.</p></div>
+<div class="card rv d2"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0B8A7C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/><circle cx="12" cy="15" r="2"/></svg></div><h3>System działa lokalnie</h3><p>Tam, gdzie to możliwe, automatyka działa w Twojej sieci domowej. Światło włączysz także wtedy, gdy zabraknie internetu.</p></div>
+<div class="card rv d3"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0B8A7C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M9 14l2 2 4-4"/></svg></div><h3>Dokumentacja i wsparcie</h3><p>Po montażu dostajesz protokół odbioru, listę urządzeń i dostępy na własnym koncie. System należy do Ciebie, nie do instalatora.</p></div>
+</div>
+</div>
+</section>
+
 <section class="alt">
 <div class="wrap">
-<p class="kicker">Dlaczego Domkontrol</p>
-<h2>Podejście inżynierskie, nie „gadżety”</h2>
-<div class="grid">
-<div class="card"><h3>Elektryka zrobiona poprawnie</h3><p>Pracuję z uprawnieniami SEP w zakresie eksploatacji i dozoru do 1 kV. Dobieram moduły do obciążenia i rodzaju instalacji, a nie odwrotnie.</p></div>
-<div class="card"><h3>System działa lokalnie</h3><p>Tam, gdzie to możliwe, automatyka działa w Twojej sieci domowej. Światło włączysz także wtedy, gdy zabraknie internetu.</p></div>
-<div class="card"><h3>Dokumentacja i wsparcie</h3><p>Po montażu dostajesz protokół odbioru, listę urządzeń i dostępy na własnym koncie. System należy do Ciebie, nie do instalatora.</p></div>
+<p class="kicker rv">Uczciwie</p>
+<h2 class="rv">Czego nie robię i dlaczego</h2>
+<p class="lead rv">Wolę od razu powiedzieć, czego się nie podejmę, niż obiecać coś, czego nie zrobię dobrze.</p>
+<div class="ngrid">
+<div class="no rv d1"><div class="x"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></div><div><h3>Nie kuję ścian</h3><p>Zajmuję się automatyką w istniejącej instalacji. Jeśli instalacja wymaga remontu, powiem to wprost.</p></div></div>
+<div class="no rv d2"><div class="x"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></div><div><h3>Nie montuję wszystkiego „na siłę”</h3><p>Jeśli urządzenie nie będzie działać stabilnie w Twojej instalacji, nie podejmę się montażu tylko po to, żeby wziąć zlecenie.</p></div></div>
+<div class="no rv d3"><div class="x"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></div><div><h3>Nie zamykam Cię w jednej chmurze</h3><p>Tam, gdzie się da, system działa lokalnie, a wszystkie dostępy są na Twoim koncie, nie na moim.</p></div></div>
+<div class="no rv d1"><div class="x"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></div><div><h3>Nie montuję systemów alarmowych z monitoringiem</h3><p>Czujniki z powiadomieniem tak, ale certyfikowany alarm podłączony do agencji ochrony to zadanie dla wyspecjalizowanej firmy.</p></div></div>
+<div class="no rv d2"><div class="x"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></div><div><h3>Nie podaję ceny „w ciemno”</h3><p>Bez rozmowy i zdjęć podam tylko widełki. Dokładna kwota zawsze na piśmie, przed rozpoczęciem prac.</p></div></div>
+<div class="no rv d3"><div class="x"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></div><div><h3>Nie wykonuję prac hydraulicznych ani gazowych</h3><p>Montuję czujniki i napędy na istniejące zawory. Wymiana rur czy armatury to praca dla hydraulika.</p></div></div>
 </div>
 </div>
 </section>
 
 <section id="faq">
 <div class="wrap">
-<p class="kicker">Pytania</p>
-<h2>Najczęstsze pytania</h2>
-<div class="faq">
+<p class="kicker rv">Pytania</p>
+<h2 class="rv">Najczęstsze pytania</h2>
+<div class="faq rv">
 <details><summary>Czy trzeba kuć ściany albo wymieniać instalację?</summary><p>W większości mieszkań nie. Moduły montuję w istniejących puszkach za włącznikami lub w rozdzielnicy. Jeśli puszka jest za płytka albo brakuje przewodu neutralnego, proponuję inne rozwiązanie jeszcze przed wyceną.</p></details>
 <details><summary>Czy dotychczasowe włączniki będą działać?</summary><p>Tak. Włączniki ścienne działają jak dotąd, a sterowanie z telefonu i automatyka są dodatkiem. Domownicy i goście nie muszą niczego się uczyć.</p></details>
 <details><summary>Mam już kupione urządzenia. Czy je zamontujesz?</summary><p>Tak, o ile nadają się do Twojej instalacji. Przed montażem sprawdzam modele i mówię wprost, jeśli coś nie będzie działać stabilnie.</p></details>
@@ -251,17 +497,17 @@ footer a{color:#B4C4D1}
 </section>
 
 <section id="kontakt" class="contact">
-<div class="wrap">
-<p class="kicker">Kontakt</p>
-<h2>Opisz, co ma działać. Odpowiem z wyceną</h2>
+<div class="wrap" style="position:relative">
+<p class="kicker rv">Kontakt</p>
+<h2 class="rv">Opisz, co ma działać. Odpowiem z wyceną</h2>
 <div class="cgrid">
-<div>
-<a class="big" href="tel:+48792373885">+48 792 373 885</a>
-<p style="margin-top:6px">Telefon i SMS. Jeśli nie odbieram, oddzwonię tego samego dnia</p>
+<div class="rv d1">
+<a class="big" href="tel:+48792373885"><svg viewBox="0 0 24 24" fill="none" stroke="#2DD4BF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.900v3a2 2 0 0 1-2.200 2 19.800 19.800 0 0 1-8.600-3.100 19.500 19.500 0 0 1-6-6A19.800 19.800 0 0 1 2.100 4.200 2 2 0 0 1 4.100 2h3a2 2 0 0 1 2 1.700c.1 1 .4 1.900.7 2.800a2 2 0 0 1-.5 2.100L8 9.900a16 16 0 0 0 6 6l1.300-1.300a2 2 0 0 1 2.100-.4c.9.3 1.800.6 2.800.7a2 2 0 0 1 1.700 2z"/></svg>+48 792 373 885</a>
+<p style="margin-top:8px">Telefon i SMS. Jeśli nie odbieram, oddzwonię tego samego dnia.</p>
 <p style="margin-top:22px"><a class="mail" href="mailto:domkontrol.office@gmail.com">domkontrol.office@gmail.com</a></p>
 <p style="margin-top:22px">Aby wycena była dokładna, dołącz 2–3 zdjęcia: puszka pod włącznikiem, rozdzielnica oraz modele urządzeń, jeśli już je masz.</p>
 </div>
-<form id="f" novalidate>
+<form id="f" class="rv d2" novalidate>
 <label>Imię<input name="imie" autocomplete="given-name" required></label>
 <label>Telefon lub e-mail<input name="kontakt" autocomplete="tel" required></label>
 <label>Co chcesz zautomatyzować?<textarea name="opis" required></textarea></label>
@@ -284,15 +530,41 @@ footer a{color:#B4C4D1}
 </footer>
 
 <script>
-document.getElementById('f').addEventListener('submit',function(e){
-  e.preventDefault();
-  var d=new FormData(this),m=document.getElementById('m');
-  if(!d.get('imie')||!d.get('kontakt')||!d.get('opis')){m.textContent='Uzupełnij wszystkie trzy pola, żebym mógł odpowiedzieć.';return;}
-  var body='Imię: '+d.get('imie')+'\nKontakt: '+d.get('kontakt')+'\n\n'+d.get('opis');
-  var link='mailto:domkontrol.office@gmail.com?subject='+encodeURIComponent('Zapytanie o wycenę – smart home')+'&body='+encodeURIComponent(body);
-  m.textContent='Jeśli program pocztowy się nie otworzył, napisz na domkontrol.office@gmail.com lub zadzwoń: 792 373 885.';
-  try{window.location.href=link;}catch(err){}
-});
+(function(){
+  var hdr=document.getElementById('hdr');
+  function onScroll(){hdr.classList.toggle('scrolled',window.scrollY>8);}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var els=document.querySelectorAll('.rv,.pain');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.15,rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(el){io.observe(el);});
+  } else { els.forEach(function(el){el.classList.add('in');}); }
+
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var snow=document.getElementById('snow');
+  if(snow&&!reduce){
+    for(var i=0;i<28;i++){
+      var s=document.createElement('i');
+      var size=(2+Math.random()*4).toFixed(1);
+      s.style.left=(Math.random()*100).toFixed(1)+'%';
+      s.style.width=s.style.height=size+'px';
+      s.style.animationDuration=(7+Math.random()*8).toFixed(1)+'s';
+      s.style.animationDelay=(-Math.random()*12).toFixed(1)+'s';
+      snow.appendChild(s);
+    }
+  }
+
+  document.getElementById('f').addEventListener('submit',function(e){
+    e.preventDefault();
+    var d=new FormData(this),m=document.getElementById('m');
+    if(!d.get('imie')||!d.get('kontakt')||!d.get('opis')){m.textContent='Uzupełnij wszystkie trzy pola, żebym mógł odpowiedzieć.';return;}
+    var body='Imię: '+d.get('imie')+'\nKontakt: '+d.get('kontakt')+'\n\n'+d.get('opis');
+    var link='mailto:domkontrol.office@gmail.com?subject='+encodeURIComponent('Zapytanie o wycenę – smart home')+'&body='+encodeURIComponent(body);
+    m.textContent='Jeśli program pocztowy się nie otworzył, napisz na domkontrol.office@gmail.com lub zadzwoń: 792 373 885.';
+    try{window.location.href=link;}catch(err){}
+  });
+})();
 </script>
 </body>
 </html>
